@@ -6,7 +6,7 @@
 #    By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/05 14:04:42 by mcauchy           #+#    #+#              #
-#    Updated: 2024/05/09 16:40:38 by mcauchy          ###   ########.fr        #
+#    Updated: 2024/05/09 16:45:39 by mcauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ NAME = moulinette
 
 HEADER = includes/moulinette.h
 
-all: MK_LIBFT MK_OUTPUT $(NAME)
+all: MK_LIBFT MK_OUTPUT change_includes $(NAME)
 
 $(NAME):	$(OBJS)
 			@echo "linking $(NAME)..."
