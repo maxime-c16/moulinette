@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/maximecauchy/workflow/Minishell/libft",
+      "program": "/Users/maximecauchy/workflow/Minishell/libft/build/Debug/outDebug"
+    }
+  ]
+}
