@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/09 15:19:18 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/09 16:34:24 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,41 @@ char	*create_function_name(char *filename, char **function_dir)
 	return (NULL);
 }
 
-int main(int ac, char **av) 
+FILE	*get_student_output(char *function_dir, char *function_name)
+{
+	char	*command;
+	char	*stud_path;
+	char	*cwd;
+	FILE	*student_output;
+
+	cwd = getcwd(NULL, 0);
+	cwd = ft_strjoin(cwd, "/");
+	stud_path = ft_strjoin(cwd, function_dir);
+	command = ft_strjoin("gcc -c ", stud_path);
+	command = ft_strjoin(command, function_name);
+	command = ft_strjoin(command, ".c ");
+	command = ft_strjoin(command, cwd);
+	command = ft_strjoin(command, "srcs/");
+	command = ft_strjoin(command, function_dir);
+	command = ft_strjoin(command, "tester.c");
+	printf("command: %s\n", command);
+	system(command);
+	free(command);
+	system("gcc *.o -o stud && ./stud > student_output");
+	system("rm *.o");
+	student_output = fopen("./student_output", "r");
+	return (student_output);
+}
+
+int main(int ac, char **av, char **envp) 
 {
 	char	*filename;
 	char	*function_dir;
 	char	*function_name;
-	char	*expected_output;
+	char	*output_dir;
+	char	*cwd;
+	FILE	*expected_output;
+	FILE	*student_output;
 
 	if (ac != 2) {
 		printf("Usage: ./moulinette <CXX/exXX/ft_XXX.c>\n");
@@ -98,7 +127,22 @@ int main(int ac, char **av)
 	printf("function_name: %s\n", function_name);
 	printf("function_dir: %s\n", function_dir);
 	
-	// expected_output = get_expected_output(filename, function_name);
+	// output_dir = ft_strjoin("srcs/", function_dir);
+	cwd = getcwd(NULL, 0);
+	output_dir = ft_strjoin("srcs/", function_dir);
+	output_dir = ft_strjoin(output_dir, "output/");
+	output_dir = ft_strjoin(output_dir, function_name);
+	output_dir = ft_strjoin(output_dir, ".out");
+	cwd = ft_strjoin(cwd, "/");
+	output_dir = ft_strjoin(cwd, output_dir);
+	printf("output_dir: %s\n", output_dir);
+	expected_output = fopen(output_dir, "r");
+	if (!expected_output)
+	{
+		printf("Error: could not open expected output file\n");
+		return (EXIT_FAILURE);
+	}
+	student_output = get_student_output(function_dir, function_name);
 
 	free(filename);
 	free(function_name);

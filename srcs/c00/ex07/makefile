@@ -6,7 +6,7 @@
 #    By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 14:33:44 by mcauchy           #+#    #+#              #
-#    Updated: 2024/05/09 15:00:00 by mcauchy          ###   ########.fr        #
+#    Updated: 2024/05/09 16:36:53 by mcauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ all: $(NAME)
 $(NAME):	$(OBJS)
 			@$(CC) $^ -o $@
 			@mkdir -p $(OUT_DIR)
-			@./$(NAME) > $(OUT_DIR)/ft_putchar.out
+			@./$(NAME) > $(OUT_DIR)/ft_putnbr.out
 			
 			
 $(OBJ_DIR)/%.o:	%.c $(HEADER)
