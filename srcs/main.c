@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/09 16:50:53 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/09 16:53:41 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,18 +169,16 @@ int main(int ac, char **av, char **envp)
 		return (EXIT_FAILURE);
 	}
 	student_output = get_student_output(function_dir, function_name);
-	//check now if the output is the same
-	//if it is the same print OK else print KO
-	//then print the expected output and the student output
-	//then remove the student output
 
 	if (check_output(expected_output, student_output) == 0)
 	{
-		printf("OK\n");
+		//use color code to print OK
+		printf("\033[0;32mOK\033[0m\n");
 	}
 	else
 	{
-		printf("KO\n");
+		//use color code to print KO
+		printf("\033[0;31mKO\033[0m\n");
 	}
 	free(filename);
 	free(function_name);
