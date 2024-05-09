@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/09 16:34:24 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/09 16:47:48 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,11 @@ int main(int ac, char **av, char **envp)
 		return (EXIT_FAILURE);
 	}
 	student_output = get_student_output(function_dir, function_name);
-
+	if (student_output != expected_output)
+	{
+		printf("Error: output does not match expected output\n");
+		return (EXIT_FAILURE);
+	}
 	free(filename);
 	free(function_name);
 	free(function_dir);
