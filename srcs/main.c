@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/09 16:47:48 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/09 16:50:53 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,32 @@ FILE	*get_student_output(char *function_dir, char *function_name)
 	return (student_output);
 }
 
+int	check_output(FILE *expected_output, FILE *student_output)
+{
+	char	expected_char;
+	char	student_char;
+
+	while (fscanf(expected_output, "%c", &expected_char) != EOF)
+	{
+		if (fscanf(student_output, "%c", &student_char) == EOF)
+		{
+			printf("Error: student output is shorter than expected output\n");
+			return (EXIT_FAILURE);
+		}
+		if (expected_char != student_char)
+		{
+			printf("Error: student output is different from expected output\n");
+			return (EXIT_FAILURE);
+		}
+	}
+	if (fscanf(student_output, "%c", &student_char) != EOF)
+	{
+		printf("Error: student output is longer than expected output\n");
+		return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
+}
+
 int main(int ac, char **av, char **envp) 
 {
 	char	*filename;
@@ -143,10 +169,18 @@ int main(int ac, char **av, char **envp)
 		return (EXIT_FAILURE);
 	}
 	student_output = get_student_output(function_dir, function_name);
-	if (student_output != expected_output)
+	//check now if the output is the same
+	//if it is the same print OK else print KO
+	//then print the expected output and the student output
+	//then remove the student output
+
+	if (check_output(expected_output, student_output) == 0)
 	{
-		printf("Error: output does not match expected output\n");
-		return (EXIT_FAILURE);
+		printf("OK\n");
+	}
+	else
+	{
+		printf("KO\n");
 	}
 	free(filename);
 	free(function_name);
