@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/09 16:53:41 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/09 16:54:53 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ FILE	*get_student_output(char *function_dir, char *function_name)
 	command = ft_strjoin(command, "srcs/");
 	command = ft_strjoin(command, function_dir);
 	command = ft_strjoin(command, "tester.c");
-	printf("command: %s\n", command);
 	system(command);
 	free(command);
 	system("gcc *.o -o stud && ./stud > student_output");
@@ -149,9 +148,9 @@ int main(int ac, char **av, char **envp)
 		printf("Error: invalid filename\n");
 		return (EXIT_FAILURE);
 	}
-	printf("filename: %s\n", filename);
-	printf("function_name: %s\n", function_name);
-	printf("function_dir: %s\n", function_dir);
+	// printf("filename: %s\n", filename);
+	// printf("function_name: %s\n", function_name);
+	// printf("function_dir: %s\n", function_dir);
 	
 	// output_dir = ft_strjoin("srcs/", function_dir);
 	cwd = getcwd(NULL, 0);
@@ -161,7 +160,6 @@ int main(int ac, char **av, char **envp)
 	output_dir = ft_strjoin(output_dir, ".out");
 	cwd = ft_strjoin(cwd, "/");
 	output_dir = ft_strjoin(cwd, output_dir);
-	printf("output_dir: %s\n", output_dir);
 	expected_output = fopen(output_dir, "r");
 	if (!expected_output)
 	{
