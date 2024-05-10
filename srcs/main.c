@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/10 11:18:21 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:24:24 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int check_output(FILE *expected_output, FILE *student_output, char *output_name)
 	FILE	*trace;
 
 	trace = fopen("trace", "a");
-	command = ft_strdup("diff -u ");
+	command = ft_strdup("diff ");
 	command = ft_strjoin(command, output_name);
 	command = ft_strjoin(command, " student_output >> trace");
 	while (fscanf(expected_output, "%c", &expected_char) != EOF)
@@ -167,6 +167,22 @@ int	return_define_value_from_filename(char *function_name)
 	if (strcmp(function_name, "ft_print_combn") == 0)
 		return (FT_PRINT_COMBN_TESTER);
 	return (0);
+}
+
+int	remove_stud_out(int define_v)
+{
+	int	i;
+	char	*command;
+
+	i = 0;
+	while (i < define_v)
+	{
+		command = ft_strdup("rm student_output");
+		command = ft_strjoin(command, ft_itoa(i + 1));
+		system(command);
+		i++;
+	}
+	return (EXIT_SUCCESS);
 }
 
 int	create_compare_stud_output(char *function_dir, char *function_name)
@@ -222,7 +238,8 @@ int	create_compare_stud_output(char *function_dir, char *function_name)
 		i++;
 	}
 	if (!is_success)
-		printf("A trace file has been created at \033[0;33m%s\033[0m\n", cwd);
+		printf("A trace file has been created at \033[0;33mmoulinette/\033[0m\n");
+	remove_stud_out(define_v);
 	free(output_name);
 	free(student_outputs);
 	free(expected_output);
