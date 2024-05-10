@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/10 11:57:25 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:59:34 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,6 @@ int	remove_stud_out(int define_v)
 		command = ft_strdup("rm student_output");
 		if (define_v > 1)
 			command = ft_strjoin(command, ft_itoa(i + 1));
-		command = ft_strjoin(command, ".out");
 		system(command);
 		i++;
 	}
@@ -205,6 +204,7 @@ int	create_compare_stud_output(char *function_dir, char *function_name)
 	FILE	**expected_output;
 	
 	i = 0;
+	is_success = true;
 	define_v = return_define_value_from_filename(function_name);
 	output_name = (char **)malloc(sizeof(char *) * define_v + 1);
 	student_outputs = (FILE **)malloc(sizeof(FILE *) * define_v + 1);
