@@ -6,11 +6,13 @@
 #    By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 14:22:06 by mcauchy           #+#    #+#              #
-#    Updated: 2024/05/09 16:36:18 by mcauchy          ###   ########.fr        #
+#    Updated: 2024/05/10 09:46:57 by mcauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FILES = ft_is_negative.c tester.c
+FILES = ft_is_negative.c
+
+TESTERS = tester1.c tester2.c tester3.c tester4.c tester5.c
 
 OBJ_DIR = .objs
 
@@ -20,7 +22,9 @@ SRCS = $(FILES)
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
 
-CC = gcc
+TESTERS_OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(TESTERS:.c=.o)))
+
+CC = gcc -w
 
 NAME = tester
 
@@ -28,12 +32,15 @@ HEADER = ../../../includes/tester.h
 
 all: $(NAME)
 
-$(NAME):	$(OBJS)
-			@$(CC) $^ -o $@
+$(NAME):	$(OBJS) $(TESTERS_OBJS)
 			@mkdir -p $(OUT_DIR)
-			@./$(NAME) > $(OUT_DIR)/ft_is_negative.out
-			
-			
+			@j=1; \
+			for i in $(TESTERS_OBJS); do \
+				$(CC) $(OBJS) $$i -o $(NAME); \
+				./$(NAME) > $(OUT_DIR)/$(basename $(FILES))$$j.out; \
+				j=$$((j+1)); \
+			done
+
 $(OBJ_DIR)/%.o:	%.c $(HEADER)
 				@mkdir -p $(OBJ_DIR)
 				@$(CC) -o $@ -c $<
