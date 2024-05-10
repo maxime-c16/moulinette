@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/10 10:45:46 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/10 10:48:57 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,7 +198,6 @@ int	create_compare_stud_output(char *function_dir, char *function_name)
 		cwd = ft_strjoin(cwd, "/");
 		output_name[i] = ft_strjoin(cwd, output_name[i]);
 		expected_output[i] = fopen(output_name[i], "r");
-		printf("Opening expected output file %s\n", output_name[i]);
 		if (!expected_output[i])
 		{
 			printf("Error: could not open expected output file\n");
@@ -208,14 +207,15 @@ int	create_compare_stud_output(char *function_dir, char *function_name)
 		i++;
 	}
 	i = 0;
-	printf("Now comparing the outputs\n");
+	printf("Now testing \033[0;33m%s\033[0m\n", function_name);
 	while (i < define_v)
 	{
-		printf("Test %d: ", i);
+		printf("Test %d: ", i + 1);
 		if (check_output(expected_output[i], student_outputs[i]) == 0)
 			printf("\033[0;32mOK\033[0m\n");
 		else
 			printf("\033[0;31mKO\033[0m\n");
+		usleep(500000);
 		i++;
 	}
 	free(output_name);
