@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/10 11:55:19 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:57:25 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,7 +185,9 @@ int	remove_stud_out(int define_v)
 	while (i < define_v)
 	{
 		command = ft_strdup("rm student_output");
-		command = ft_strjoin(command, ft_itoa(i + 1));
+		if (define_v > 1)
+			command = ft_strjoin(command, ft_itoa(i + 1));
+		command = ft_strjoin(command, ".out");
 		system(command);
 		i++;
 	}
@@ -246,7 +248,7 @@ int	create_compare_stud_output(char *function_dir, char *function_name)
 		i++;
 	}
 	if (!is_success)
-		printf("A trace file has been created at \033[0;33mmoulinette/\033[0m\n");
+		printf("A trace file has been created at \033[0;33mmoulinette/trace\033[0m\n");
 	remove_stud_out(define_v);
 	free(output_name);
 	free(student_outputs);
