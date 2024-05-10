@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/10 10:38:22 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/10 10:41:02 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,11 @@ FILE	*get_student_output(char *function_dir, char *function_name, int index, int
 	system(command);
 	system("rm *.o");
 	student_output = fopen(out_path, "r");
+	if (!student_output)
+	{
+		printf("Error: could not open student output file\n");
+		return (NULL);
+	}
 	return (student_output);
 }
 
@@ -192,6 +197,7 @@ int	create_compare_stud_output(char *function_dir, char *function_name)
 		cwd = ft_strjoin(cwd, "/");
 		output_name[i] = ft_strjoin(cwd, output_name[i]);
 		expected_output[i] = fopen(output_name[i], "r");
+		printf("Opening expected output file %s\n", output_name[i]);
 		if (!expected_output[i])
 		{
 			printf("Error: could not open expected output file\n");
