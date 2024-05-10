@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/10 11:31:29 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:33:39 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,7 @@ int	remove_stud_out(int define_v)
 		system(command);
 		i++;
 	}
+	system("rm stud");
 	return (EXIT_SUCCESS);
 }
 
@@ -259,6 +260,7 @@ int main(int ac, char **av, char **envp)
 		printf("Usage: ./moulinette <CXX/exXX/ft_XXX.c>\n");
 		return (EXIT_FAILURE);
 	}
+	system("rm -f trace");
 	filename = strdup(av[1]);
 	function_name = create_function_name(filename, &function_dir);
 	if (!function_name)
