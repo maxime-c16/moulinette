@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/10 12:03:41 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/10 12:06:10 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,11 @@ int check_output(FILE *expected_output, FILE *student_output, char *output_name,
 		fclose(trace);
 		return (EXIT_FAILURE);
 	}
-	fclose(trace);
+	if (is_created)
+	{
+		fclose(trace);
+		return (EXIT_FAILURE);
+	}
 	return (EXIT_SUCCESS);
 }
 
