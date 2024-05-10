@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/10 11:36:16 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:41:16 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ FILE	*get_student_output(char *function_dir, char *function_name, int index, int
 	command = ft_strdup("gcc *.o -o stud && ./stud > ");
 	command = ft_strjoin(command, out_path);
 	system(command);
-	system("rm *.o");
+	system("rm *.o stud");
 	student_output = fopen(out_path, "r");
 	if (!student_output)
 	{
@@ -117,6 +117,7 @@ int check_output(FILE *expected_output, FILE *student_output, char *output_name,
 	char	*command;
 	FILE	*trace;
 
+	system("rm -f trace");
 	trace = fopen("trace", "a");
 	command = ft_strdup("diff ");
 	command = ft_strjoin(command, output_name);
@@ -184,7 +185,6 @@ int	remove_stud_out(int define_v)
 		system(command);
 		i++;
 	}
-	system("rm ../stud");
 	return (EXIT_SUCCESS);
 }
 
