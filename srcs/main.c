@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/10 10:41:02 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/10 10:43:48 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,8 @@ int	create_compare_stud_output(char *function_dir, char *function_name)
 		output_name[i] = ft_strjoin("srcs/", function_dir);
 		output_name[i] = ft_strjoin(output_name[i], "output/");
 		output_name[i] = ft_strjoin(output_name[i], function_name);
-		output_name[i] = ft_strjoin(output_name[i], ft_itoa(i));
+		if (define_v > 1)
+			output_name[i] = ft_strjoin(output_name[i], ft_itoa(i + 1));
 		output_name[i] = ft_strjoin(output_name[i], ".out");
 		cwd = ft_strjoin(cwd, "/");
 		output_name[i] = ft_strjoin(cwd, output_name[i]);
