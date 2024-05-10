@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/10 11:52:55 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:55:19 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,6 +230,7 @@ int	create_compare_stud_output(char *function_dir, char *function_name)
 		i++;
 	}
 	i = 0;
+	system("rm -f trace");
 	printf("Now testing \033[0;33m%s\033[0m\n", function_name);
 	while (i < define_v)
 	{
