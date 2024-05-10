@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/10 11:24:24 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:27:17 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ FILE	*get_student_output(char *function_dir, char *function_name, int index, int
 	return (student_output);
 }
 
-int check_output(FILE *expected_output, FILE *student_output, char *output_name)
+int check_output(FILE *expected_output, FILE *student_output, char *output_name, int index)
 {
 	char	expected_char;
 	char	student_char;
@@ -120,7 +120,9 @@ int check_output(FILE *expected_output, FILE *student_output, char *output_name)
 	trace = fopen("trace", "a");
 	command = ft_strdup("diff ");
 	command = ft_strjoin(command, output_name);
-	command = ft_strjoin(command, " student_output >> trace");
+	command = ft_strjoin(command, " student_output");
+	command = ft_strjoin(command, ft_itoa(index + 1));
+	command = ft_strjoin(command, " > trace");
 	while (fscanf(expected_output, "%c", &expected_char) != EOF)
 	{
 		if (fscanf(student_output, "%c", &student_char) == EOF)
