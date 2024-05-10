@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 17:26:45 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/05 14:40:13 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/10 10:32:56 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,24 @@
 # include <signal.h>
 # include <errno.h>
 # include <fcntl.h>
-# include <readline/readline.h>
-# include <readline/history.h>
 
-# define CMD 2
-# define PIPE 1
-# define REDIR_SIMPLE 2
-# define REDIR_DOUBLE 3
 # define EXIT_FAILURE 1
 # define EXIT_SUCCESS 0
 # define FD_STDOUT 1
 # define FD_STDIN 0
 # define FD_STDERR 2
-# define EXPAND_CHAR "' \"[]$=,:.*!?-#@%~="
+
+// c00
+
+# define FT_PUTCHAR_TESTER 6
+# define FT_PRINT_ALPHABET_TESTER 1
+# define FT_PRINT_REVERSE_ALPHABET_TESTER 1
+# define FT_PRINT_NUMBERS_TESTER 1
+# define FT_IS_NEGATIVE_TESTER 5
+# define FT_PRINT_COMB_TESTER 1
+# define FT_PRINT_COMB2_TESTER 1
+# define FT_PUTNBR_TESTER 5
+# define FT_PRINT_COMBN_TESTER 1
 
 extern int	g_value;
 
