@@ -6,21 +6,11 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/10 10:51:49 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:10:32 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*this project aims to correct some exercises drom the piscine c of 42
-it will take the filename as follow: ./moulinette <CXX/exXX/ft_XXX.c>
-then it will get the fubnction that main_tester of that exercise and run the tests
-the it will compare the output with the expected output
-*/
-
 #include "../includes/moulinette.h"
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 char	*create_function_name(char *filename, char **function_dir) 
 {
@@ -120,29 +110,35 @@ FILE	*get_student_output(char *function_dir, char *function_name, int index, int
 	return (student_output);
 }
 
-int	check_output(FILE *expected_output, FILE *student_output)
+int check_output(FILE *expected_output, FILE *student_output)
 {
-	char	expected_char;
-	char	student_char;
+	char expected_char;
+	char student_char;
+	FILE *trace;
 
+	trace = fopen("trace", "a");
 	while (fscanf(expected_output, "%c", &expected_char) != EOF)
 	{
 		if (fscanf(student_output, "%c", &student_char) == EOF)
 		{
-			printf("Error: student output is shorter than expected output\t");
+			fprintf(trace, "Error: student output is shorter than expected output\t");
+			system("diff -u expected_output student_output >> trace");
 			return (EXIT_FAILURE);
 		}
 		if (expected_char != student_char)
 		{
-			printf("Error: student output is different from expected output\t");
+			fprintf(trace, "Error: student output is different from expected output\t");
+			system("diff -u expected_output student_output >> trace");
 			return (EXIT_FAILURE);
 		}
 	}
 	if (fscanf(student_output, "%c", &student_char) != EOF)
 	{
-		printf("Error: student output is longer than expected output\t");
+		fprintf(trace, "Error: student output is longer than expected output\t");
+		system("diff -u expected_output student_output >> trace");
 		return (EXIT_FAILURE);
 	}
+	fclose(trace);
 	return (EXIT_SUCCESS);
 }
 
@@ -167,7 +163,6 @@ int	return_define_value_from_filename(char *function_name)
 	if (strcmp(function_name, "ft_print_combn") == 0)
 		return (FT_PRINT_COMBN_TESTER);
 	return (0);
-
 }
 
 int	create_compare_stud_output(char *function_dir, char *function_name)
@@ -176,6 +171,7 @@ int	create_compare_stud_output(char *function_dir, char *function_name)
 	char	*cwd;
 	int		i;
 	int		define_v;
+	bool	is_success;
 	FILE	**student_outputs;
 	FILE	**expected_output;
 	
@@ -214,10 +210,15 @@ int	create_compare_stud_output(char *function_dir, char *function_name)
 		if (check_output(expected_output[i], student_outputs[i]) == 0)
 			printf("\033[0;32mOK\033[0m\n");
 		else
+		{
 			printf("\033[0;31mKO\033[0m\n");
+			is_success = false;
+		}
 		usleep(500000);
 		i++;
 	}
+	if (!is_success)
+		printf("A trace file has been created at \033[0;33m%s\033[0m\n", cwd);
 	free(output_name);
 	free(student_outputs);
 	free(expected_output);
