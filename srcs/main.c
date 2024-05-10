@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/10 11:45:56 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:52:55 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,12 @@ int check_output(FILE *expected_output, FILE *student_output, char *output_name,
 	char	*command;
 	FILE	*trace;
 
-	system("rm -f trace");
 	trace = fopen("trace", "a");
+	if (!trace)
+	{
+		printf("Error: could not open trace file\n");
+		return (EXIT_FAILURE);
+	}
 	command = ft_strdup("diff ");
 	command = ft_strjoin(command, output_name);
 	command = ft_strjoin(command, " student_output");
@@ -129,17 +133,20 @@ int check_output(FILE *expected_output, FILE *student_output, char *output_name,
 		if (fscanf(student_output, "%c", &student_char) == EOF)
 		{
 			system(command);
+			fclose(trace);
 			return (EXIT_FAILURE);
 		}
 		if (expected_char != student_char)
 		{
 			system(command);
+			fclose(trace);
 			return (EXIT_FAILURE);
 		}
 	}
 	if (fscanf(student_output, "%c", &student_char) != EOF)
 	{
 		system(command);
+		fclose(trace);
 		return (EXIT_FAILURE);
 	}
 	fclose(trace);
