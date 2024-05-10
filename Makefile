@@ -6,7 +6,7 @@
 #    By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/05 14:04:42 by mcauchy           #+#    #+#              #
-#    Updated: 2024/05/09 16:45:39 by mcauchy          ###   ########.fr        #
+#    Updated: 2024/05/10 10:56:28 by mcauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ $(NAME):	$(OBJS)
 			@echo "linking $(NAME)..."
 			@$(CC) $(CFLAGS) $^ $(LIBFT_DIR)/libft.a -o $@
 			@echo "compilation done."
+			@echo "usage: \033[1;34m./moulinette [path to cXX/exXX/ft_*.c]\033[0m"
 			
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c $(HEADER)
 				@mkdir -p $(OBJ_DIR)
