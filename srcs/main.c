@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/10 10:48:57 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/10 10:51:49 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,18 +129,18 @@ int	check_output(FILE *expected_output, FILE *student_output)
 	{
 		if (fscanf(student_output, "%c", &student_char) == EOF)
 		{
-			printf("Error: student output is shorter than expected output\n");
+			printf("Error: student output is shorter than expected output\t");
 			return (EXIT_FAILURE);
 		}
 		if (expected_char != student_char)
 		{
-			printf("Error: student output is different from expected output\n");
+			printf("Error: student output is different from expected output\t");
 			return (EXIT_FAILURE);
 		}
 	}
 	if (fscanf(student_output, "%c", &student_char) != EOF)
 	{
-		printf("Error: student output is longer than expected output\n");
+		printf("Error: student output is longer than expected output\t");
 		return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
