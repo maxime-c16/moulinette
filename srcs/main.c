@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/10 12:06:10 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/10 14:54:25 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,27 +182,43 @@ int check_output(FILE *expected_output, FILE *student_output, char *output_name,
 	return (EXIT_SUCCESS);
 }
 
-int	return_define_value_from_filename(char *function_name)
+int return_define_value_from_filename(char *function_name)
 {
-	if (strcmp(function_name, "ft_putchar") == 0)
-		return (FT_PUTCHAR_TESTER);
-	if (strcmp(function_name, "ft_print_alphabet") == 0)
-		return (FT_PRINT_ALPHABET_TESTER);
-	if (strcmp(function_name, "ft_print_reverse_alphabet") == 0)
-		return (FT_PRINT_REVERSE_ALPHABET_TESTER);
-	if (strcmp(function_name, "ft_print_numbers") == 0)
-		return (FT_PRINT_NUMBERS_TESTER);
-	if (strcmp(function_name, "ft_is_negative") == 0)
-		return (FT_IS_NEGATIVE_TESTER);
-	if (strcmp(function_name, "ft_print_comb") == 0)
-		return (FT_PRINT_COMB_TESTER);
-	if (strcmp(function_name, "ft_print_comb2") == 0)
-		return (FT_PRINT_COMB2_TESTER);
-	if (strcmp(function_name, "ft_putnbr") == 0)
-		return (FT_PUTNBR_TESTER);
-	if (strcmp(function_name, "ft_print_combn") == 0)
-		return (FT_PRINT_COMBN_TESTER);
-	return (0);
+	struct Function {
+		char *name;
+		int value;
+	};
+
+	struct Function functions[] = {
+		{"ft_putchar", FT_PUTCHAR_TESTER},
+		{"ft_print_alphabet", FT_PRINT_ALPHABET_TESTER},
+		{"ft_print_reverse_alphabet", FT_PRINT_REVERSE_ALPHABET_TESTER},
+		{"ft_print_numbers", FT_PRINT_NUMBERS_TESTER},
+		{"ft_is_negative", FT_IS_NEGATIVE_TESTER},
+		{"ft_print_comb", FT_PRINT_COMB_TESTER},
+		{"ft_print_comb2", FT_PRINT_COMB2_TESTER},
+		{"ft_putnbr", FT_PUTNBR_TESTER},
+		{"ft_print_combn", FT_PRINT_COMBN_TESTER},
+		{"ft_ft", FT_FT_TESTER},
+		{"ft_ultimate_ft", FT_ULTIMATE_FT_TESTER},
+		{"ft_swap", FT_SWAP_TESTER},
+		{"ft_div_mod", FT_DIV_MOD_TESTER},
+		{"ft_ultimate_div_mod", FT_ULTIMATE_DIV_MOD_TESTER},
+		{"ft_putstr", FT_PUTSTR_TESTER},
+		{"ft_strlen", FT_STRLEN_TESTER},
+		{"ft_rev_int_tab", FT_REV_INT_TAB_TESTER},
+		{"ft_sort_int_tab", FT_SORT_INT_TAB_TESTER},
+	};
+
+	int num_functions = sizeof(functions) / sizeof(functions[0]);
+
+	for (int i = 0; i < num_functions; i++) {
+		if (strcmp(function_name, functions[i].name) == 0) {
+			return functions[i].value;
+		}
+	}
+
+	return 0;
 }
 
 int	remove_stud_out(int define_v)

@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 17:26:45 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/10 11:07:25 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/10 14:51:57 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,18 @@
 # define FT_PRINT_COMB2_TESTER 1
 # define FT_PUTNBR_TESTER 5
 # define FT_PRINT_COMBN_TESTER 1
+
+// c01
+
+# define FT_FT_TESTER 1
+# define FT_ULTIMATE_FT_TESTER 1
+# define FT_SWAP_TESTER 1
+# define FT_DIV_MOD_TESTER 3
+# define FT_ULTIMATE_DIV_MOD_TESTER 3
+# define FT_PUTSTR_TESTER 3
+# define FT_STRLEN_TESTER 2
+# define FT_REV_INT_TAB_TESTER 2
+# define FT_SORT_INT_TAB_TESTER 2
 
 extern int	g_value;
 
