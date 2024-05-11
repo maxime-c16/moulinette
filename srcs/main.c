@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/10 14:54:25 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/11 12:40:53 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,8 @@ int return_define_value_from_filename(char *function_name)
 		{"ft_strlen", FT_STRLEN_TESTER},
 		{"ft_rev_int_tab", FT_REV_INT_TAB_TESTER},
 		{"ft_sort_int_tab", FT_SORT_INT_TAB_TESTER},
+		{"ft_strcpy", FT_STRCPY_TESTER},
+		{"ft_strncpy", FT_STRNCPY_TESTER}
 	};
 
 	int num_functions = sizeof(functions) / sizeof(functions[0]);

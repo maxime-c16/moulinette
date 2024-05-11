@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 13:39:44 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/10 13:38:34 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/11 12:44:24 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,21 @@ void	ft_putstr(char *str);
 int		ft_strlen(char *str);
 void	ft_rev_int_tab(int *tab, int size);
 void	ft_sort_int_tab(int *tab, int size);
+
+// c02
+
+char			*ft_strcpy(char *dest, char *src);
+char			*ft_strncpy(char *dest, char *src, unsigned int n);
+int				ft_str_is_alpha(char *str);
+int				ft_str_is_numeric(char *str);
+int				ft_str_is_lowercase(char *str);
+int				ft_str_is_uppercase(char *str);
+int				ft_str_is_printable(char *str);
+char			*ft_strupcase(char *str);
+char			*ft_strlowcase(char *str);
+char			*ft_strcapitalize(char *str);
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
+void			ft_putstr_non_printable(char *str);
+void			*ft_print_memory(void *addr, unsigned int size);
 
 #endif

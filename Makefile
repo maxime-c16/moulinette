@@ -6,7 +6,7 @@
 #    By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/05 14:04:42 by mcauchy           #+#    #+#              #
-#    Updated: 2024/05/10 15:03:35 by mcauchy          ###   ########.fr        #
+#    Updated: 2024/05/11 12:46:48 by mcauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,11 +45,15 @@ $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c $(HEADER)
 
 change_includes:
 			@cp -r ../c* .
-			@for j in {00..01}; do find c0$$j/ex* -name "*.c" -exec sed -i '' 's/^#include .*/#include "..\/..\/includes\/tester.h"/' {} \;; done
+			@find c00/ex* -name "*.c" -exec sed -i '' 's/^#include .*/#include "..\/..\/includes\/tester.h"/' {} \; #c00
+			# @find c01/ex* -name "*.c" -exec sed -i '' 's/^#include .*/#include "..\/..\/includes\/tester.h"/' {} \; #c01
+			# @find c02/ex* -name "*.c" -exec sed -i '' 's/^#include .*/#include "..\/..\/includes\/tester.h"/' {} \; #c02
 
 MK_OUTPUT:
 			@echo "generating output files..."
-			@for j in {00..01}; do echo {00..08} | xargs -n 1 -P 8 -I {} make -C srcs/c0$$j/ex0{}; done
+			@echo {00..08} | xargs -n 1 -P 8 -I {} make -C srcs/c00/ex0{} #c00
+			@echo {00..08} | xargs -n 1 -P 8 -I {} make -C srcs/c01/ex0{} #c01
+			@echo {00..01} | xargs -n 1 -P 8 -I {} make -C srcs/c02/ex0{} #c02
 
 MK_LIBFT:
 			@make -C $(LIBFT_DIR)
@@ -66,7 +70,10 @@ clean:
 fclean:		clean
 			@/bin/rm -f $(NAME)
 			@make -C $(LIBFT_DIR) fclean
-			@for j in {00..01}; do for i in {00..08}; do make -C srcs/c0$$j/ex0$$i fclean; done; done
+			@/bin/rm -rf c*/
+			@for i in {00..08}; do make -C srcs/c00/ex0$$i fclean; done #c00
+			@for i in {00..08}; do make -C srcs/c01/ex0$$i fclean; done #c01
+			@for i in {00..01}; do make -C srcs/c02/ex0$$i fclean; done #c02
 			@clear
 			@echo "fclean done."
 			

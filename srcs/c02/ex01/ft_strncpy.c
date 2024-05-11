@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tester3.c                                          :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/10 09:46:01 by mcauchy           #+#    #+#             */
+/*   Created: 2024/05/10 15:19:31 by mcauchy           #+#    #+#             */
 /*   Updated: 2024/05/11 12:37:17 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/tester.h"
 
-int	main(void)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	ft_is_negative(0);
-	return (0);
+	unsigned int i;
+
+	i = 0;
+	while (src[i] && i < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < n)
+	{
+		dest[i] = 0;
+		i++;
+	}
+	return (dest);
 }

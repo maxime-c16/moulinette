@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tester3.c                                          :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/10 09:46:01 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/11 12:37:17 by mcauchy          ###   ########.fr       */
+/*   Created: 2024/05/10 15:08:54 by mcauchy           #+#    #+#             */
+/*   Updated: 2024/05/11 12:44:04 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/tester.h"
 
-int	main(void)
+char	*ft_strcpy(char *dest, char *src)
 {
-	ft_is_negative(0);
-	return (0);
+	int i;
+
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	return (dest);
 }
