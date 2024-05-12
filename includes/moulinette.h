@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 17:26:45 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/11 12:27:52 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/12 16:19:47 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@
 // c02
 
 # define FT_STRCPY_TESTER 5
-# define FT_STRNCPY_TESTER 1
+# define FT_STRNCPY_TESTER 5
 
 extern int	g_value;
 
