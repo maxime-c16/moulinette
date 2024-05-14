@@ -6,11 +6,25 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 13:43:56 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/11 12:37:17 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/14 10:49:29 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/tester.h"
+
+void	ft_print_tab(int *tab, int size)
+{
+	int	i;
+
+	i = 0;
+	printf("tab: ");
+	while (i < size)
+	{
+		printf("%d ", tab[i]);
+		i++;
+	}
+	printf("\n");
+}
 
 void	ft_sort_int_tab(int *tab, int size)
 {
@@ -30,6 +44,7 @@ void	ft_sort_int_tab(int *tab, int size)
 				tab[j] = tab[j + 1];
 				tab[j + 1] = tmp;
 			}
+			ft_print_tab(tab, size);
 			j++;
 		}
 		i++;

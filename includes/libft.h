@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 12:45:04 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/03 14:49:14 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/14 14:38:12 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ typedef struct s_help
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_memcmp(const void *s1, const void *s2, int n);
-int		ft_strlen(const char *str);
 int		ft_atoi(const char *str);
 int		ft_isalpha(int c);
 int		ft_isalnum(int c);
