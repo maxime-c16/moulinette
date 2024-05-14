@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 12:43:47 by mcauchy           #+#    #+#             */
-/*   Updated: 2022/08/14 12:43:48 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/14 14:41:16 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	dest_length;
 	size_t	src_length;
 
-	src_length = ft_strlen(src);
-	dest_length = ft_strlen(dst);
+	src_length = strlen(src);
+	dest_length = strlen(dst);
 	j = dest_length;
 	i = 0;
 	if (dest_length < size - 1 && size > 0)
