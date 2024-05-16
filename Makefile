@@ -6,7 +6,7 @@
 #    By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/05 14:04:42 by mcauchy           #+#    #+#              #
-#    Updated: 2024/05/12 16:22:58 by mcauchy          ###   ########.fr        #
+#    Updated: 2024/05/14 15:34:00 by mcauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,13 +74,13 @@ C01: all
 	
 C02: all
 	@echo "$(BLUE)compiling c02...$(RESET)"
-	@echo {00..01} | xargs -n 1 -P 2 -I {} make -C srcs/c02/ex0{} > /dev/null
+	@echo {00..09} | xargs -n 1 -P 2 -I {} make -C srcs/c02/ex0{} > /dev/null
 	@echo "$(BLUE)copying student c02 folder into moulinette/...$(RESET)"
 	@cp -r ../c02 .
 	@echo "$(BLUE)changing include path in ft_*.c files...$(RESET)"
 	@find c02/ex* -name "*.c" -exec sed -i '' 's/^#include .*/#include "..\/..\/includes\/moulinette.h"/' {} \;
 	@echo "$(BLUE)generating output files...$(RESET)"
-	@echo {00..01} | xargs -n 1 -P 2 -I {} make -C srcs/c02/ex0{} > /dev/null
+	@echo {00..09} | xargs -n 1 -P 2 -I {} make -C srcs/c02/ex0{} > /dev/null
 	@echo "usage: $(BOLD)./moulinette $(RED)[path to c02/exXX/ft_*.c]$(RESET)"
 
 MK_LIBFT:
@@ -102,7 +102,7 @@ fclean: clean
 	@/bin/rm -rf trace
 	@for i in {00..08}; do make -C srcs/c00/ex0$$i fclean > /dev/null; done #c00
 	@for i in {00..08}; do make -C srcs/c01/ex0$$i fclean > /dev/null; done #c01
-	@for i in {00..01}; do make -C srcs/c02/ex0$$i fclean > /dev/null; done #c02
+	@for i in {00..09}; do make -C srcs/c02/ex0$$i fclean > /dev/null; done #c02
 	@clear
 	@echo "$(GREEN)fclean done.$(RESET)"
 			

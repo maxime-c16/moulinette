@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 17:26:45 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/12 16:19:47 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/14 15:33:00 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,15 @@
 
 # define FT_STRCPY_TESTER 5
 # define FT_STRNCPY_TESTER 5
+# define FT_STR_IS_ALPHA_TESTER 6
+# define FT_STR_IS_NUMERIC_TESTER 5
+# define FT_STR_IS_LOWERCASE_TESTER 5
+# define FT_STR_IS_UPPERCASE_TESTER 5
+# define FT_STR_IS_PRINTABLE_TESTER 5
+# define FT_STRUPCASE_TESTER 5
+# define FT_STRLOWCASE_TESTER 5
+# define FT_STRCAPITALIZE_TESTER 4
+# define FT_STRLCPY_TESTER 5
 
 extern int	g_value;
 

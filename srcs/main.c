@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/11 12:40:53 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/14 15:38:21 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,7 +209,26 @@ int return_define_value_from_filename(char *function_name)
 		{"ft_rev_int_tab", FT_REV_INT_TAB_TESTER},
 		{"ft_sort_int_tab", FT_SORT_INT_TAB_TESTER},
 		{"ft_strcpy", FT_STRCPY_TESTER},
-		{"ft_strncpy", FT_STRNCPY_TESTER}
+		{"ft_strncpy", FT_STRNCPY_TESTER},
+		{"ft_str_is_alpha", FT_STR_IS_ALPHA_TESTER},
+		{"ft_str_is_numeric", FT_STR_IS_NUMERIC_TESTER},
+		{"ft_str_is_lowercase", FT_STR_IS_LOWERCASE_TESTER},
+		{"ft_str_is_uppercase", FT_STR_IS_UPPERCASE_TESTER},
+		{"ft_str_is_printable", FT_STR_IS_PRINTABLE_TESTER},
+		{"ft_strupcase", FT_STRUPCASE_TESTER},
+		{"ft_strlowcase", FT_STRLOWCASE_TESTER},
+		{"ft_strcapitalize", FT_STRCAPITALIZE_TESTER},
+		{"ft_strlcpy", FT_STRLCPY_TESTER}
+		// {"ft_putstr_non_printable", FT_PUTSTR_NON_PRINTABLE_TESTER},
+		// {"ft_print_memory", FT_PRINT_MEMORY_TESTER},
+		// {"ft_split", FT_SPLIT_TESTER},
+		// {"ft_print_tab", FT_PRINT_TAB_TESTER},
+		// {"ft_dup_tab", FT_DUP_TAB_TESTER},
+		// {"ft_itoa", FT_ITOA_TESTER},
+		// {"ft_strmapi", FT_STRMAPI_TESTER},
+		// {"ft_strtrim", FT_STRTRIM_TESTER},
+		// {"ft_substr", FT_SUBSTR_TESTER},
+		// {"ft_strjoin", FT_STRJOIN
 	};
 
 	int num_functions = sizeof(functions) / sizeof(functions[0]);
