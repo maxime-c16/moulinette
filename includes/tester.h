@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 13:39:44 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/13 14:45:30 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/27 20:51:55 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,13 @@ char			*ft_strcapitalize(char *str);
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
 void			ft_putstr_non_printable(char *str);
 void			*ft_print_memory(void *addr, unsigned int size);
+
+//print memory utils
+void			ft_print_hex(unsigned char c);
+void			print_hex_line(void *addr, unsigned int size);
+void			print_char_line(void *addr, unsigned int size);
+void			print_address(void *addr);
+
+// c03
 
 #endif

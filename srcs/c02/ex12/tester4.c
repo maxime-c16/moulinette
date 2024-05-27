@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   tester4.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/06 15:51:03 by maximecauch       #+#    #+#             */
-/*   Updated: 2024/05/23 14:10:18 by mcauchy          ###   ########.fr       */
+/*   Created: 2024/05/27 20:46:30 by mcauchy           #+#    #+#             */
+/*   Updated: 2024/05/27 20:53:46 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../../../includes/tester.h"
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+int	main(void)
 {
-	unsigned int	i;
-
-	i = 0;
-	if (size > 0)
-	{
-		while (--size && src[i])
-		{
-			dest[i] = src[i];
-			i++;
-		}
-		dest[i] = 0;
-	}
-	while (src[i])
-		i++;
-	return (i);
+	void	*ptr = NULL;
+	
+	ft_print_memory(ptr, 100);
+	return (0);
 }

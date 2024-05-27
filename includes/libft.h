@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 12:45:04 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/14 14:38:12 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/23 14:10:06 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,8 @@ char	*ft_strdup(const char *s1);
 char	*ft_itoa(int n);
 char	**ft_split_parsing(char const *s, char c);
 char	*ft_strcpy(char *str, char *old_str);
-size_t	ft_strlcpy(char *dst, const char *src, size_t size);
-size_t	ft_strlcat(char *dst, const char *src, size_t size);
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
+unsigned int	ft_strlcat(char *dst, const char *src, unsigned int size);
 
 // liste chainee
 

@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   tester4.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/06 15:51:03 by maximecauch       #+#    #+#             */
-/*   Updated: 2024/05/23 14:10:18 by mcauchy          ###   ########.fr       */
+/*   Created: 2024/05/27 20:27:10 by mcauchy           #+#    #+#             */
+/*   Updated: 2024/05/27 20:31:03 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../../../includes/tester.h"
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+int	main(void)
 {
-	unsigned int	i;
-
-	i = 0;
-	if (size > 0)
-	{
-		while (--size && src[i])
-		{
-			dest[i] = src[i];
-			i++;
-		}
-		dest[i] = 0;
-	}
-	while (src[i])
-		i++;
-	return (i);
+	char	str[] = "\a\b\t\n\v\f\r\x1B\x1C\x1D\x1E\x1F\x7F";
+	
+	ft_putstr_non_printable(str);
+	return (0);
 }

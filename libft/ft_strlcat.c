@@ -6,13 +6,13 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 12:43:47 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/14 14:41:16 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/23 14:07:30 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+unsigned int	ft_strlcat(char *dst, const char *src, unsigned int size)
 {
 	size_t	i;
 	size_t	j;
