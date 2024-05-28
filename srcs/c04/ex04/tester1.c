@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tester3.c                                          :+:      :+:    :+:   */
+/*   tester1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/16 17:47:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/28 14:58:51 by mcauchy          ###   ########.fr       */
+/*   Created: 2024/05/28 15:54:51 by mcauchy           #+#    #+#             */
+/*   Updated: 2024/05/28 16:19:53 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,22 @@
 
 int	main(void)
 {
-	char	*dest;
-	char	*src = "Hello";
-	
-	dest = (char *)malloc(sizeof(char) * sizeof(src) + 1);
-	dest = strdup("1234");
-	printf("strlcpy: %u\n", ft_strlcpy(dest, src, 1));
-	printf("src: %s\n", src);
-	printf("copying at most %d bytes\n", 1);
-	printf("dest: %s\n", dest);
-	if (dest[1] == '\0')
-		printf("dest[1]: \\0\n");
-	else
-		printf("dest is not null-terminated\n");
-	free(dest);
+	ft_putnbr_base(42, "01");
+	write(1, "\n", 1);
+	ft_putnbr_base(42, "0123456789");
+	write(1, "\n", 1);
+	ft_putnbr_base(42, "0123456789abcdef");
+	write(1, "\n", 1);
+	ft_putnbr_base(42, "0123456789ABCDEF");
+	write(1, "\n", 1);
+	ft_putnbr_base(42, "01234567");
+	write(1, "\n", 1);
+	ft_putnbr_base(42, "01234567+");
+	write(1, "\n", 1);
+	ft_putnbr_base(42, "01234567-");
+	write(1, "\n", 1);
+	ft_putnbr_base(42, "01234567 ");
+	write(1, "\n", 1);
+	ft_putnbr_base(42, "012345677");
 	return (0);
 }

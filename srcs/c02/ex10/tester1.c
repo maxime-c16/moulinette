@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 17:34:19 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/23 14:12:42 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/28 14:58:44 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void)
 	char	*src = "Hello";
 	
 	dest = (char *)malloc(sizeof(char) * sizeof(src) + 1);
-	printf("strlcpy: %lu\n", strlcpy(dest, src, 3));
+	printf("strlcpy: %u\n", ft_strlcpy(dest, src, 3));
 	printf("copying at most %d bytes\n", 3);
 	printf("src: %s\n", src);
 	printf("dest: %s\n", dest);

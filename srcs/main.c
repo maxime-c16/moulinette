@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/28 13:54:46 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/28 16:46:05 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,7 +228,10 @@ int return_define_value_from_filename(char *function_name)
 		{"ft_strncmp", FT_STRNCMP_TESTER},
 		{"ft_strcat", FT_STRCAT_TESTER},
 		{"ft_strncat", FT_STRNCAT_TESTER},
-		{"ft_strstr", FT_STRSTR_TESTER}
+		{"ft_strstr", FT_STRSTR_TESTER},
+		{"ft_atoi", FT_ATOI_TESTER},
+		{"ft_putnbr_base", FT_PUTNBR_BASE_TESTER},
+		{"ft_atoi_base", FT_ATOI_BASE_TESTER},
 		// {"ft_split", FT_SPLIT_TESTER},
 		// {"ft_print_tab", FT_PRINT_TAB_TESTER},
 		// {"ft_dup_tab", FT_DUP_TAB_TESTER},

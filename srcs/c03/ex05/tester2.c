@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   tester2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/16 16:47:12 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/28 14:56:46 by mcauchy          ###   ########.fr       */
+/*   Created: 2024/05/28 15:07:16 by mcauchy           #+#    #+#             */
+/*   Updated: 2024/05/28 15:10:56 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/tester.h"
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+int	main(void)
 {
-	unsigned int	i;
-	unsigned int	j;
+	char			str[50] = "test";
+	char			dest[50] = " passed :)";
+	unsigned int	res = 0;
 	
-	i = 0;
-	j = 0;
-	while (src[i] != '\0')
-		i++;
-	while (j < size - 1 && src[j] != '\0')
-	{
-		dest[j] = src[j];
-		j++;
-	}
-	if (size > 0) 
-		dest[size - 1] = '\0';
-	return strlcpy(dest, src, size);
+	res = ft_strlcat(str, dest, 30);
+	printf("Result: %s\n", str);
+	printf("Return: %u\n", res);
+	return (0);
 }

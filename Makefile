@@ -6,7 +6,7 @@
 #    By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/05 14:04:42 by mcauchy           #+#    #+#              #
-#    Updated: 2024/05/28 12:46:45 by mcauchy          ###   ########.fr        #
+#    Updated: 2024/05/28 15:25:29 by mcauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,16 +74,27 @@ C01: all
 	
 C02: all
 	@echo "$(BLUE)compiling c02...$(RESET)"
-	@echo {00..09} | xargs -n 1 -P 2 -I {} make -C srcs/c02/ex0{} > /dev/null
-	@echo {10..12} | xargs -n 1 -P 1 -I {} make -C srcs/c02/ex{} > /dev/null
+	@echo {00..09} | xargs -n 1 -P 9 -I {} make -C srcs/c02/ex0{} > /dev/null
+	@echo {10..12} | xargs -n 1 -P 2 -I {} make -C srcs/c02/ex{} > /dev/null
 	@echo "$(BLUE)copying student c02 folder into moulinette/...$(RESET)"
 	@cp -r ../c02 .
 	@echo "$(BLUE)changing include path in ft_*.c files...$(RESET)"
 	@find c02/ex* -name "*.c" -exec sed -i '' 's/^#include .*/#include "..\/..\/includes\/moulinette.h"/' {} \;
 	@echo "$(BLUE)generating output files...$(RESET)"
-	@echo {00..09} | xargs -n 1 -P 2 -I {} make -C srcs/c02/ex0{} > /dev/null
-	@echo {10..12} | xargs -n 1 -P 1 -I {} make -C srcs/c02/ex{} > /dev/null
+	@echo {00..09} | xargs -n 1 -P 9 -I {} make -C srcs/c02/ex0{} > /dev/null
+	@echo {10..12} | xargs -n 1 -P 2 -I {} make -C srcs/c02/ex{} > /dev/null
 	@echo "usage: $(BOLD)./moulinette $(RED)[path to c02]$(RESET)"
+	
+C03: all
+	@echo "$(BLUE)compiling c03...$(RESET)"
+	@echo {00..05} | xargs -n 1 -P 5 -I {} make -C srcs/c03/ex0{} > /dev/null
+	@echo "$(BLUE)copying student c03 folder into moulinette/...$(RESET)"
+	@cp -r ../c03 .
+	@echo "$(BLUE)changing include path in ft_*.c files...$(RESET)"
+	@find c03/ex* -name "*.c" -exec sed -i '' 's/^#include .*/#include "..\/..\/includes\/moulinette.h"/' {} \;
+	@echo "$(BLUE)generating output files...$(RESET)"
+	@echo {00..05} | xargs -n 1 -P 5 -I {} make -C srcs/c03/ex0{} > /dev/null
+	@echo "usage: $(BOLD)./moulinette $(RED)[path to c03]$(RESET)"
 
 MK_LIBFT:
 	@make -C $(LIBFT_DIR)
@@ -106,6 +117,7 @@ fclean: clean
 	@for i in {00..08}; do make -C srcs/c01/ex0$$i fclean > /dev/null; done #c01
 	@for i in {00..09}; do make -C srcs/c02/ex0$$i fclean > /dev/null; done #c02
 	@for i in {10..12}; do make -C srcs/c02/ex$$i fclean > /dev/null; done #c02
+	@for i in {00..05}; do make -C srcs/c03/ex0$$i fclean > /dev/null; done #c03
 	@clear
 	@echo "$(GREEN)fclean done.$(RESET)"
 			

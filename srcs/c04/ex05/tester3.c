@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   tester3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/16 16:47:12 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/28 14:56:46 by mcauchy          ###   ########.fr       */
+/*   Created: 2024/05/28 16:33:22 by mcauchy           #+#    #+#             */
+/*   Updated: 2024/05/28 16:35:14 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/tester.h"
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+int	main(void)
 {
-	unsigned int	i;
-	unsigned int	j;
-	
-	i = 0;
-	j = 0;
-	while (src[i] != '\0')
-		i++;
-	while (j < size - 1 && src[j] != '\0')
-	{
-		dest[j] = src[j];
-		j++;
-	}
-	if (size > 0) 
-		dest[size - 1] = '\0';
-	return strlcpy(dest, src, size);
+	char	*base;
+	char	*str;
+	int		result;
+
+	base = "01";
+	str = "101010";
+	result = ft_atoi_base(str, base);
+	printf("Gave: %s\n", str);
+	printf("Expected: 42\n");
+	printf("Returned: %d\n", result);
+	return (0);
 }

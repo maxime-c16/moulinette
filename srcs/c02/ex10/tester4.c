@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 17:51:54 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/27 21:19:37 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/28 14:56:30 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main(void)
 	char *dest;
 	size_t dest_size = sizeof(src);
 	dest = (char *)malloc(sizeof(char) * dest_size + 1);
-	size_t result = strlcpy(dest, src, dest_size);
+	size_t result = ft_strlcpy(dest, src, dest_size);
 	printf("copying at most %zu bytes\n", dest_size);
 	printf("src: %s\n", src);
 	printf("Result: %zu\n", result);

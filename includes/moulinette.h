@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 17:26:45 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/28 13:53:53 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/28 16:45:51 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,12 @@
 # define FT_STRCAT_TESTER 3
 # define FT_STRNCAT_TESTER 5
 # define FT_STRSTR_TESTER 5
+
+// c04
+
+# define FT_ATOI_TESTER 5
+# define FT_PUTNBR_BASE_TESTER 5
+# define FT_ATOI_BASE_TESTER 10
 
 extern int	g_value;
 

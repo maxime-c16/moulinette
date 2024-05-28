@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   tester1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/16 16:47:12 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/28 14:56:46 by mcauchy          ###   ########.fr       */
+/*   Created: 2024/05/28 15:41:28 by mcauchy           #+#    #+#             */
+/*   Updated: 2024/05/28 15:42:38 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/tester.h"
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+int	main(void)
 {
-	unsigned int	i;
-	unsigned int	j;
-	
-	i = 0;
-	j = 0;
-	while (src[i] != '\0')
-		i++;
-	while (j < size - 1 && src[j] != '\0')
-	{
-		dest[j] = src[j];
-		j++;
-	}
-	if (size > 0) 
-		dest[size - 1] = '\0';
-	return strlcpy(dest, src, size);
+	printf("%d\n", ft_atoi("  -+--1234abcd"));
+	return (0);
 }
