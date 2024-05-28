@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 13:39:44 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/27 20:51:55 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/28 13:46:55 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,11 @@ void			print_char_line(void *addr, unsigned int size);
 void			print_address(void *addr);
 
 // c03
+
+int				ft_strcmp(char *s1, char *s2);
+int				ft_strncmp(char *s1, char *s2, unsigned int n);
+char			*ft_strcat(char *dest, char *src);
+char			*ft_strncat(char *dest, char *src, unsigned int nb);
+char			*ft_strstr(char *str, char *to_find);
 
 #endif
