@@ -6,11 +6,14 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/27 21:01:31 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/28 12:42:05 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/moulinette.h"
+
+int	g_success_tests = 0;
+int	g_total_tests = 0;
 
 char	*create_function_name(char *filename, char **function_dir) 
 {
@@ -268,9 +271,15 @@ int	create_compare_stud_output(char *function_dir, char *function_name)
 	bool	is_success;
 	FILE	**student_outputs;
 	FILE	**expected_output;
+	int		total_tests;
+	int		failed_tests;
+	int		successful_tests;
 	
 	i = 0;
 	is_success = true;
+	total_tests = 0;
+	failed_tests = 0;
+	successful_tests = 0;
 	define_v = return_define_value_from_filename(function_name);
 	output_name = (char **)malloc(sizeof(char *) * define_v + 1);
 	student_outputs = (FILE **)malloc(sizeof(FILE *) * define_v + 1);
@@ -298,17 +307,20 @@ int	create_compare_stud_output(char *function_dir, char *function_name)
 		i++;
 	}
 	i = 0;
-	system("rm -f trace");
+	printf("\n----------------------------------\n");
 	printf("Now testing \033[0;33m%s\033[0m\n", function_name);
+	printf("----------------------------------\n");
 	while (i < define_v)
 	{
 		printf("Test %d: ", i + 1);
+		total_tests++;
 		if (check_output(expected_output[i], student_outputs[i], output_name[i], i) == 0)
 			printf("\033[0;32mOK\033[0m\n");
 		else
 		{
 			printf("\033[0;31mKO\033[0m\n");
 			is_success = false;
+			failed_tests++;
 		}
 		usleep(500000);
 		i++;
@@ -319,37 +331,108 @@ int	create_compare_stud_output(char *function_dir, char *function_name)
 	free(output_name);
 	free(student_outputs);
 	free(expected_output);
+	successful_tests = total_tests - failed_tests;
+	float grade_percentage = (float)successful_tests / total_tests * 100;
+	if (grade_percentage >= 80)
+		printf("Grade: \033[1;32m%d / 100\033[0m\n", (int)grade_percentage);
+	else if (grade_percentage >= 50)
+		printf("Grade: \033[1;33m%d / 100\033[0m\n", (int)grade_percentage);
+	else
+		printf("Grade: \033[1;31m%d / 100\033[0m\n", (int)grade_percentage);
+	printf("----------------------------------\n\n");
+	g_success_tests += successful_tests;
+	g_total_tests += total_tests;
 	return (EXIT_SUCCESS);
 }
 
-int main(int ac, char **av, char **envp) 
+void process_directory(const char *base_path, const char *sub_dir)
 {
-	char	*filename;
-	char	*function_dir;
-	char	*function_name;
+	char		path[1024];
+	struct		dirent *de;
+	DIR			*dr;
+	char 		full_path[1024];
+	struct stat	st;
+	
+	snprintf(path, sizeof(path), "%s/%s", base_path, sub_dir);
+	dr = opendir(path);
+	if (!dr)
+	{
+		perror("opendir");
+		return;
+	}
+	while ((de = readdir(dr)) != NULL)
+	{
+		// Skip the current and parent directory entries
+		if (strcmp(de->d_name, ".") == 0 || strcmp(de->d_name, "..") == 0)
+			continue;
+		snprintf(full_path, sizeof(full_path), "%s/%s/%s", base_path, sub_dir, de->d_name);
+		if (stat(full_path, &st) == -1)
+		{
+			perror("stat");
+			continue;
+		}
 
+		if (S_ISDIR(st.st_mode))
+			// If it's a directory, recursively process it
+			process_directory(base_path, de->d_name);
+		else
+		{
+			// Check if the file name starts with "ft_"
+			if (strncmp(de->d_name, "ft_", 3) == 0)
+			{
+				char new_path[1024];
+				snprintf(new_path, sizeof(new_path), "%s/%s/%s", base_path, sub_dir, de->d_name);
+
+				char *filename = strdup(new_path);
+				if (!filename)
+				{
+					perror("strdup");
+					continue;
+				}
+				char *function_dir;
+				char *function_name = create_function_name(filename, &function_dir);
+				if (!function_name)
+				{
+					printf("Error: invalid filename\n");
+					free(filename);
+					continue;
+				}
+				if (create_compare_stud_output(function_dir, function_name) == EXIT_FAILURE)
+				{
+					printf("Error: could not create student output\n");
+					free(filename);
+					free(function_name);
+					continue;
+				}
+				free(filename);
+				free(function_name);
+				free(function_dir);
+			}
+		}
+	}
+	closedir(dr);
+}
+
+int main(int ac, char **av) 
+{
+	float	final_grade;
+	
+	final_grade = 0;
 	if (ac != 2)
 	{
-		printf("Usage: ./moulinette <CXX/exXX/ft_XXX.c>\n");
+		printf("Usage: ./moulinette <CXX>\n");
 		return (EXIT_FAILURE);
 	}
-	system("rm -f ../trace");
-	filename = strdup(av[1]);
-	function_name = create_function_name(filename, &function_dir);
-	if (!function_name)
-	{
-		printf("Error: invalid filename\n");
-		return (EXIT_FAILURE);
-	}
-	if (create_compare_stud_output(function_dir, function_name) == EXIT_FAILURE)
-	{
-		free(filename);
-		free(function_name);
-		free(function_dir);
-		return (EXIT_FAILURE);
-	}
-	free(filename);
-	free(function_name);
-	free(function_dir);
+	system("rm -f trace");
+	process_directory(av[1], ".");
+	printf("\n----------------------------------\n");
+	printf("Final grade: ");
+	final_grade = (float)g_success_tests / (float)g_total_tests * 100;
+	if (g_success_tests == g_total_tests)
+		printf("\033[1;32m%d / 100\033[0m\n", (int)final_grade);
+	else if (g_success_tests >= g_total_tests / 2)
+		printf("\033[1;33m%d / 100\033[0m\n", (int)final_grade);
+	else
+		printf("\033[1;31m%d / 100\033[0m\n", (int)final_grade);
 	return (EXIT_SUCCESS);
 }

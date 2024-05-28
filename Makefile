@@ -6,7 +6,7 @@
 #    By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/05 14:04:42 by mcauchy           #+#    #+#              #
-#    Updated: 2024/05/27 21:03:57 by mcauchy          ###   ########.fr        #
+#    Updated: 2024/05/28 12:46:45 by mcauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ C00: all
 	@find c00/ex* -name "*.c" -exec sed -i '' 's/^#include .*/#include "..\/..\/includes\/moulinette.h"/' {} \;
 	@echo "$(BLUE)generating output files...$(RESET)"
 	@echo {00..08} | xargs -n 1 -P 8 -I {} make -C srcs/c00/ex0{} > /dev/null
-	@echo "usage: $(BOLD)./moulinette $(RED)[path to c00/exXX/ft_*.c]$(RESET)"
+	@echo "usage: $(BOLD)./moulinette $(RED)[path to c00]$(RESET)"
 
 C01: all
 	@echo "$(BLUE)compiling c01...$(RESET)"
@@ -70,7 +70,7 @@ C01: all
 	@find c01/ex* -name "*.c" -exec sed -i '' 's/^#include .*/#include "..\/..\/includes\/moulinette.h"/' {} \;
 	@echo "$(BLUE)generating output files...$(RESET)"
 	@echo {00..08} | xargs -n 1 -P 8 -I {} make -C srcs/c01/ex0{} > /dev/null
-	@echo "usage: $(BOLD)./moulinette $(RED)[path to c01/exXX/ft_*.c]$(RESET)"
+	@echo "usage: $(BOLD)./moulinette $(RED)[path to c01]$(RESET)"
 	
 C02: all
 	@echo "$(BLUE)compiling c02...$(RESET)"
@@ -83,7 +83,7 @@ C02: all
 	@echo "$(BLUE)generating output files...$(RESET)"
 	@echo {00..09} | xargs -n 1 -P 2 -I {} make -C srcs/c02/ex0{} > /dev/null
 	@echo {10..12} | xargs -n 1 -P 1 -I {} make -C srcs/c02/ex{} > /dev/null
-	@echo "usage: $(BOLD)./moulinette $(RED)[path to c02/exXX/ft_*.c]$(RESET)"
+	@echo "usage: $(BOLD)./moulinette $(RED)[path to c02]$(RESET)"
 
 MK_LIBFT:
 	@make -C $(LIBFT_DIR)

@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 17:26:45 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/27 21:01:11 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/28 10:57:42 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@
 # include <errno.h>
 # include <fcntl.h>
 # include <stdbool.h>
+# include <dirent.h>
+# include <string.h>
+# include <sys/stat.h>
+# include <sys/types.h>
 
 # define EXIT_FAILURE 1
 # define EXIT_SUCCESS 0
