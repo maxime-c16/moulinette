@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/28 16:46:05 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/29 15:24:14 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,6 +232,15 @@ int return_define_value_from_filename(char *function_name)
 		{"ft_atoi", FT_ATOI_TESTER},
 		{"ft_putnbr_base", FT_PUTNBR_BASE_TESTER},
 		{"ft_atoi_base", FT_ATOI_BASE_TESTER},
+		{"ft_iterative_factorial", FT_ITERATIVE_FACTORIAL_TESTER},
+		{"ft_recursive_factorial", FT_RECURSIVE_FACTORIAL_TESTER},
+		{"ft_iterative_power", FT_ITERATIVE_POWER_TESTER},
+		{"ft_recursive_power", FT_RECURSIVE_POWER_TESTER},
+		{"ft_fibonacci", FT_FIBONACCI_TESTER},
+		{"ft_sqrt", FT_SQRT_TESTER},
+		{"ft_is_prime", FT_IS_PRIME_TESTER},
+		{"ft_find_next_prime", FT_FIND_NEXT_PRIME_TESTER},
+		{"ft_ten_queens_puzzle", FT_TEN_QUEENS_PUZZLE_TESTER},
 		// {"ft_split", FT_SPLIT_TESTER},
 		// {"ft_print_tab", FT_PRINT_TAB_TESTER},
 		// {"ft_dup_tab", FT_DUP_TAB_TESTER},

@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 13:39:44 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/28 16:46:58 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/29 14:54:53 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,17 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
 int				ft_atoi(char *str);
 void			ft_putnbr_base(int nbr, char *base);
 int				ft_atoi_base(char *str, char *base);
+
+// c05
+
+int				ft_iterative_factorial(int nb);
+int				ft_recursive_factorial(int nb);
+int				ft_iterative_power(int nb, int power);
+int				ft_recursive_power(int nb, int power);
+int				ft_fibonacci(int index);
+int				ft_sqrt(int nb);
+int				ft_is_prime(int nb);
+int				ft_find_next_prime(int nb);
+int				ft_ten_queens_puzzle(void);
 
 #endif

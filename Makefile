@@ -6,7 +6,7 @@
 #    By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/05 14:04:42 by mcauchy           #+#    #+#              #
-#    Updated: 2024/05/28 15:25:29 by mcauchy          ###   ########.fr        #
+#    Updated: 2024/05/29 15:22:56 by mcauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,6 +95,29 @@ C03: all
 	@echo "$(BLUE)generating output files...$(RESET)"
 	@echo {00..05} | xargs -n 1 -P 5 -I {} make -C srcs/c03/ex0{} > /dev/null
 	@echo "usage: $(BOLD)./moulinette $(RED)[path to c03]$(RESET)"
+	
+C04: all
+	@echo "$(BLUE)compiling c04...$(RESET)"
+	@echo {00..05} | xargs -n 1 -P 6 -I {} make -C srcs/c04/ex0{} > /dev/null
+	@echo "$(BLUE)copying student c04 folder into moulinette/...$(RESET)"
+	@cp -r ../c04 .
+	@echo "$(BLUE)changing include path in ft_*.c files...$(RESET)"
+	@find c04/ex* -name "*.c" -exec sed -i '' 's/^#include .*/#include "..\/..\/includes\/moulinette.h"/' {} \;
+	@echo "$(BLUE)generating output files...$(RESET)"
+	@echo {00..05} | xargs -n 1 -P 6 -I {} make -C srcs/c04/ex0{} > /dev/null
+	@echo "usage: $(BOLD)./moulinette $(RED)[path to c04]$(RESET)"
+	
+C05: all
+	@echo "$(RED)this will take a while to compile, please be patient...$(RESET)"
+	@echo "$(BLUE)compiling c05...$(RESET)"
+	@echo {00..08} | xargs -n 1 -P 8 -I {} make -C srcs/c05/ex0{} > /dev/null
+	@echo "$(BLUE)copying student c05 folder into moulinette/...$(RESET)"
+	@cp -r ../c05 .
+	@echo "$(BLUE)changing include path in ft_*.c files...$(RESET)"
+	@find c05/ex* -name "*.c" -exec sed -i '' 's/^#include .*/#include "..\/..\/includes\/moulinette.h"/' {} \;
+	@echo "$(BLUE)generating output files...$(RESET)"
+	@echo {00..08} | xargs -n 1 -P 8 -I {} make -C srcs/c05/ex0{} > /dev/null
+	@echo "usage: $(BOLD)./moulinette $(RED)[path to c05]$(RESET)"
 
 MK_LIBFT:
 	@make -C $(LIBFT_DIR)

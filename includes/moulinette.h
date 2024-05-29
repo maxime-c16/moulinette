@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 17:26:45 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/28 16:45:51 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/29 15:21:01 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,18 @@
 # define FT_ATOI_TESTER 5
 # define FT_PUTNBR_BASE_TESTER 5
 # define FT_ATOI_BASE_TESTER 10
+
+// c05
+
+# define FT_ITERATIVE_FACTORIAL_TESTER 4
+# define FT_RECURSIVE_FACTORIAL_TESTER 4
+# define FT_ITERATIVE_POWER_TESTER 4
+# define FT_RECURSIVE_POWER_TESTER 4
+# define FT_FIBONACCI_TESTER 4
+# define FT_SQRT_TESTER 5
+# define FT_IS_PRIME_TESTER 5
+# define FT_FIND_NEXT_PRIME_TESTER 5
+# define FT_TEN_QUEENS_PUZZLE_TESTER 1
 
 extern int	g_value;
 
