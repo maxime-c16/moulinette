@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:54:32 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/29 15:18:53 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/29 19:11:56 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_solution(int *board)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 10)
@@ -25,14 +25,15 @@ void	print_solution(int *board)
 	printf("\n");
 }
 
-int check_rules(int *board, int row, int col)
+int	check_rules(int *board, int row, int col)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < col)
 	{
-		if (board[i] == row || board[i] - i == row - col || board[i] + i == row + col)
+		if (board[i] == row || board[i] - i == row - col ||\
+			board[i] + i == row + col)
 			return (0);
 		i++;
 	}
@@ -41,7 +42,7 @@ int check_rules(int *board, int row, int col)
 
 void	solve(int *board, int col, int *count)
 {
-	int row;
+	int	row;
 
 	row = 0;
 	if (col == 10)
@@ -69,7 +70,7 @@ int	ft_ten_queens_puzzle(void)
 	int	board[10];
 	int	count;
 	int	i;
-	
+
 	count = 0;
 	i = 0;
 	while (i < 10)

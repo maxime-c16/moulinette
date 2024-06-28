@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/29 15:24:14 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/06/03 16:32:46 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,21 +83,25 @@ FILE	*get_student_output(char *function_dir, char *function_name, int index, int
 	command = ft_strjoin("gcc -c ", stud_path);
 	command = ft_strjoin(command, function_name);
 	command = ft_strjoin(command, ".c ");
-	command = ft_strjoin(command, cwd);
-	command = ft_strjoin(command, "srcs/");
-	command = ft_strjoin(command, function_dir);
 	if (define_v > 1)
 	{
+		command = ft_strjoin(command, cwd);
+		command = ft_strjoin(command, "srcs/");
+		command = ft_strjoin(command, function_dir);
 		command = ft_strjoin(command, "tester");
 		command = ft_strjoin(command, ft_itoa(index + 1));
 		out_path = ft_strjoin("student_output", ft_itoa(index + 1));
+		command = ft_strjoin(command, ".c");
 	}
-	else
+	else if (define_v == 1)
 	{
+		command = ft_strjoin(command, cwd);
+		command = ft_strjoin(command, "srcs/");
+		command = ft_strjoin(command, function_dir);
 		command = ft_strjoin(command, "tester");
 		out_path = ft_strdup("student_output");
+		command = ft_strjoin(command, ".c");
 	}
-	command = ft_strjoin(command, ".c");
 	system(command);
 	free(command);
 	command = ft_strdup("gcc *.o -o stud && ./stud > ");
@@ -327,11 +331,12 @@ int	create_compare_stud_output(char *function_dir, char *function_name)
 	printf("\n----------------------------------\n");
 	printf("Now testing \033[0;33m%s\033[0m\n", function_name);
 	printf("----------------------------------\n");
-	while (i < define_v)
+	if (define_v == 0)
 	{
-		printf("Test %d: ", i + 1);
+		printf("testing the program: \033[0;33m%s\033[0m\n", function_name);
+		printf("Test 1: ");
 		total_tests++;
-		if (check_output(expected_output[i], student_outputs[i], output_name[i], i) == 0)
+		if (check_output(expected_output[0], student_outputs[0], output_name[0], 0) == 0)
 			printf("\033[0;32mOK\033[0m\n");
 		else
 		{
@@ -339,8 +344,24 @@ int	create_compare_stud_output(char *function_dir, char *function_name)
 			is_success = false;
 			failed_tests++;
 		}
-		usleep(500000);
-		i++;
+	}
+	else
+	{
+		while (i < define_v)
+		{
+			printf("Test %d: ", i + 1);
+			total_tests++;
+			if (check_output(expected_output[i], student_outputs[i], output_name[i], i) == 0)
+				printf("\033[0;32mOK\033[0m\n");
+			else
+			{
+				printf("\033[0;31mKO\033[0m\n");
+				is_success = false;
+				failed_tests++;
+			}
+			usleep(500000);
+			i++;
+		}
 	}
 	if (!is_success)
 		printf("A trace file has been created at \033[0;33mmoulinette/trace\033[0m\n");

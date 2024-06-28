@@ -6,7 +6,7 @@
 #    By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/05 14:04:42 by mcauchy           #+#    #+#              #
-#    Updated: 2024/05/29 15:34:27 by mcauchy          ###   ########.fr        #
+#    Updated: 2024/06/03 16:35:06 by mcauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,6 +118,17 @@ C05: all
 	@echo "$(BLUE)generating output files...$(RESET)"
 	@echo {00..08} | xargs -n 1 -P 8 -I {} make -C srcs/c05/ex0{} > /dev/null
 	@echo "usage: $(BOLD)./moulinette $(RED)[path to c05]$(RESET)"
+	
+C06: all
+	@echo "$(BLUE)compiling c06...$(RESET)"
+	@echo {00..01} | xargs -n 1 -P 8 -I {} make -C srcs/c06/ex0{} > /dev/null
+	@echo "$(BLUE)copying student c06 folder into moulinette/...$(RESET)"
+	@cp -r ../c06 .
+	@echo "$(BLUE)changing include path in ft_*.c files...$(RESET)"
+	@find c06/ex* -name "*.c" -exec sed -i '' 's/^#include .*/#include "..\/..\/includes\/moulinette.h"/' {} \;
+	@echo "$(BLUE)generating output files...$(RESET)"
+	@echo {00..01} | xargs -n 1 -P 8 -I {} make -C srcs/c06/ex0{} > /dev/null
+	@echo "usage: $(BOLD)./moulinette $(RED)[path to c06]$(RESET)"
 
 MK_LIBFT:
 	@make -C $(LIBFT_DIR)

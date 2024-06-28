@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:00:03 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/29 14:08:57 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/29 18:57:35 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_iterative_factorial(int nb)
 {
 	int	result;
-	
+
 	result = 1;
 	if (nb < 0)
 		return (0);

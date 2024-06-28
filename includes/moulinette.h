@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 17:26:45 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/29 15:21:01 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/06/05 12:46:27 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,13 @@
 # define FT_IS_PRIME_TESTER 5
 # define FT_FIND_NEXT_PRIME_TESTER 5
 # define FT_TEN_QUEENS_PUZZLE_TESTER 1
+
+// c06
+
+# define FT_PRINT_PROGRAM_NAME_TESTER 0 // 0 means that this is already a program so no tester is needed because it compiles and runs itself
+# define FT_PRINT_PARAMS_TESTER -2 // negative because it's a program that takes arguments that have to be tested
+# define FT_REV_PARAMS_TESTER -2
+# define FT_SORT_PARAMS_TESTER -7
 
 extern int	g_value;
 

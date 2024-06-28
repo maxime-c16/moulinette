@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:16:54 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/29 14:17:26 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/29 18:53:49 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(void)
 {
 	int	result;
-	
+
 	result = ft_iterative_power(5, 3);
 	printf("Expected: 125\n");
 	printf("Returned: %d\n", result);

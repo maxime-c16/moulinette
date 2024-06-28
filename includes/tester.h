@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 13:39:44 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/29 14:54:53 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/06/28 17:55:15 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <ctype.h>
+# include <fcntl.h>
+# include <errno.h>
+# include <libgen.h>
+# include <readline/readline.h>
+
+# define BUFF_SIZE 4096
 
 // c00
 
@@ -91,5 +98,71 @@ int				ft_sqrt(int nb);
 int				ft_is_prime(int nb);
 int				ft_find_next_prime(int nb);
 int				ft_ten_queens_puzzle(void);
+
+// c06 not listed because they are programs
+
+// c07
+
+char			*ft_strdup(char *str);
+int				*ft_range(int min, int max);
+int				ft_ultimate_range(int **range, int min, int max);
+char			*ft_strjoin(int size, char **strs, char *sep);
+char			*ft_convert_base(char *nbr, char *base_from, char *base_to);
+
+// c08
+
+typedef struct s_stock_str
+{
+	int		size;
+	char	*str;
+	char	*copy;
+}	t_stock_str;
+
+struct s_stock_str	*ft_strs_to_tab(int ac, char **av);
+void				ft_show_tab(struct s_stock_str *par);
+
+// c09 not needed
+
+// c10
+
+// ft_tail
+void	ft_error(char *filename);
+
+// c11
+
+void	ft_foreach(int *tab, int length, void (*f)(int));
+int		*ft_map(int *tab, int length, int (*f)(int));
+int		ft_any(char **tab, int (*f)(char*));
+int		ft_count_if(char **tab, int length, int (*f)(char*));
+int		ft_is_sort(int *tab, int length, int (*f)(int, int));
+
+// do-op utils
+
+int		add(int a, int b);
+int		sub(int a, int b);
+int		mul(int a, int b);
+int		divi(int a, int b);
+int		mod(int a, int b);
+
+void	ft_sort_string_tab(char **tab);
+void	ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char *));
+
+// c12
+
+typedef struct s_list
+{
+	struct s_list	*next;
+	void			*data;
+}					t_list;
+
+t_list	*ft_create_elem(void *data);
+void	ft_list_push_front(t_list **begin_list, void *data);
+int		ft_list_size(t_list *begin_list);
+t_list	*ft_list_last(t_list *begin_list);
+void	ft_list_push_back(t_list **begin_list, void *data);
+t_list	*ft_list_push_strs(int size, char **strs);
+void	ft_list_clear(t_list *lst, void (*free_fct)(void *));
+t_list	*ft_list_at(t_list *begin_list, unsigned int nbr);
+void	ft_list_reverse(t_list **begin_list);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:32:20 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/11 12:37:17 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/06/20 12:37:05 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	main(void)
 {
-	printf("len = %d\n", ft_strlen("Hello World!"));
+	char *str = "Hello World!";
+	printf("len = %d\n", ft_strlen(str));
 	return (0);
 }

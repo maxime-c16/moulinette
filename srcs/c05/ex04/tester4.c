@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:26:56 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/29 14:27:06 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/05/29 19:39:37 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(void)
 {
 	int	result;
-	
+
 	result = ft_fibonacci(42);
 	printf("Expected: 267914296\n");
 	printf("Returned: %d\n", result);
