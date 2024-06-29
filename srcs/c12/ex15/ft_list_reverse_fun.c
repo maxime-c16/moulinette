@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_reverse.c                                  :+:      :+:    :+:   */
+/*   ft_list_reverse_fun.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/28 16:58:32 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/06/29 13:48:12 by mcauchy          ###   ########.fr       */
+/*   Created: 2024/06/29 13:50:25 by mcauchy           #+#    #+#             */
+/*   Updated: 2024/06/29 13:59:24 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-void	ft_list_reverse(t_list **begin_list)
+void	ft_list_reverse_fun(t_list *begin_list)
 {
 	t_list	*current;
 	t_list	*next;
@@ -20,19 +20,15 @@ void	ft_list_reverse(t_list **begin_list)
 
 	next = NULL;
 	prev = NULL;
-	current = *begin_list;
+	current = begin_list;
 	if (begin_list)
 	{
-		if (*begin_list)
+		while (current)
 		{
-			while (current)
-			{
-				next = current->next;
-				current->next = prev;
-				prev = current;
-				current = next;
-			}
-			*begin_list = prev;
+			next = current->next;
+			current->next = prev;
+			prev = current;
+			current = next;
 		}
 	}
 }

@@ -6,11 +6,11 @@
 #    By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/28 14:15:10 by mcauchy           #+#    #+#              #
-#    Updated: 2024/06/28 14:23:20 by mcauchy          ###   ########.fr        #
+#    Updated: 2024/06/29 14:38:17 by mcauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FILES = ft_list_push_front.c tester.c
+FILES = ft_sorted_list_insert.c tester.c
 
 OBJ_DIR = .objs
 
@@ -31,7 +31,7 @@ all: $(NAME)
 $(NAME):	$(OBJS)
 			@$(CC) $^ -o $@
 			@mkdir -p $(OUT_DIR)
-			@./$(NAME) > $(OUT_DIR)/ft_list_push_front.out
+			@./$(NAME) > $(OUT_DIR)/ft_sorted_list_insert.out
 
 
 $(OBJ_DIR)/%.o:	%.c $(HEADER)
