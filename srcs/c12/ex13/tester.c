@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/28 18:04:53 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/06/28 18:25:25 by mcauchy          ###   ########.fr       */
+/*   Created: 2024/06/29 13:18:44 by mcauchy           #+#    #+#             */
+/*   Updated: 2024/06/29 13:25:59 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,6 @@ t_list	*ft_create_elem(void *data)
 	return (ptr);
 }
 
-t_list	*ft_list_last(t_list *begin_list)
-{
-	while (begin_list)
-	{
-		if (!(begin_list->next))
-			return (begin_list);
-		begin_list = begin_list->next;
-	}
-	return (begin_list);
-}
-
 void	ft_list_push_back(t_list **begin_list, void *data)
 {
 	t_list	*last;
@@ -75,19 +64,17 @@ void	ft_list_push_back(t_list **begin_list, void *data)
 	}
 }
 
-void	print_data(void *data)
-{
-	printf("Data is: [%s]\n", (char *)data);
-}
-
 int	main(void)
 {
 	t_list	*lst;
+	t_list	*tmp;
 
 	lst = NULL;
+	tmp = NULL;
 	ft_print_lst(lst);
-	ft_list_foreach(lst, NULL);
-	ft_list_foreach(lst, &print_data);
+	ft_list_merge(&lst, NULL);
+	ft_list_merge(&lst, tmp);
+	ft_list_merge(NULL, NULL);
 
 	ft_list_push_back(&lst, "First");
 	ft_list_push_back(&lst, "Second");
@@ -95,7 +82,18 @@ int	main(void)
 	ft_list_push_back(&lst, "Fourth");
 	ft_list_push_back(&lst, "Fifth");
 
-	ft_list_foreach(lst, &print_data);
+	ft_list_push_back(&tmp, "Sixth");
+	ft_list_push_back(&tmp, "Seventh");
+	ft_list_push_back(&tmp, "Eighth");
+
+	printf("Original list1:\n");
 	ft_print_lst(lst);
+	printf("Original list2:\n");
+	ft_print_lst(tmp);
+
+	printf("Applying ft_list_merge on list1 and list2:\n");
+	ft_list_merge(&lst, tmp);
+	ft_print_lst(lst);
+
 	return (0);
 }

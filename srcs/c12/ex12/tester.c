@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/28 18:04:53 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/06/28 18:25:25 by mcauchy          ###   ########.fr       */
+/*   Created: 2024/06/29 12:33:47 by mcauchy           #+#    #+#             */
+/*   Updated: 2024/06/29 13:10:31 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,15 @@ void	ft_list_push_back(t_list **begin_list, void *data)
 	}
 }
 
-void	print_data(void *data)
+int	cmp_str(void *s1, void *s2)
 {
-	printf("Data is: [%s]\n", (char *)data);
+	return (strcmp((char *)s1, (char *)s2));
+}
+
+void	free_data(void *data)
+{
+	if (data)
+		free(data);
 }
 
 int	main(void)
@@ -86,16 +92,28 @@ int	main(void)
 
 	lst = NULL;
 	ft_print_lst(lst);
-	ft_list_foreach(lst, NULL);
-	ft_list_foreach(lst, &print_data);
+	ft_list_remove_if(&lst, "Third", &cmp_str, &free_data);
+	ft_list_remove_if(NULL, "Third", &cmp_str, &free_data);
+	ft_list_remove_if(&lst, "", &cmp_str, &free_data);
+	ft_list_remove_if(&lst, "Third", NULL, &free_data);
+	ft_list_remove_if(&lst, "Third", &cmp_str, NULL);
 
-	ft_list_push_back(&lst, "First");
-	ft_list_push_back(&lst, "Second");
-	ft_list_push_back(&lst, "Third");
-	ft_list_push_back(&lst, "Fourth");
-	ft_list_push_back(&lst, "Fifth");
 
-	ft_list_foreach(lst, &print_data);
+	ft_list_push_back(&lst, strdup("First"));
+	ft_list_push_back(&lst, strdup("First"));
+	ft_list_push_back(&lst, strdup("Second"));
+	ft_list_push_back(&lst, strdup("Third"));
+	ft_list_push_back(&lst, strdup("Fourth"));
+	ft_list_push_back(&lst, strdup("Fifth"));
+	ft_list_push_back(&lst, strdup("First"));
+	printf("Original list:\n");
 	ft_print_lst(lst);
-	return (0);
+
+	printf("Applying remove if [Third] on lst:\n");
+	ft_list_remove_if(&lst, "Third", &cmp_str, &free_data);
+	ft_print_lst(lst);
+
+	printf("Applying remove if [First] on lst:\n");
+	ft_list_remove_if(&lst, "First", &cmp_str, &free_data);
+	ft_print_lst(lst);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/28 18:04:53 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/06/28 18:25:25 by mcauchy          ###   ########.fr       */
+/*   Created: 2024/06/28 21:59:31 by mcauchy           #+#    #+#             */
+/*   Updated: 2024/06/28 22:17:56 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,27 +75,45 @@ void	ft_list_push_back(t_list **begin_list, void *data)
 	}
 }
 
+int	cmp_str(void *s1, void *s2)
+{
+	return (strcmp((char *)s1, (char *)s2));
+}
+
 void	print_data(void *data)
 {
-	printf("Data is: [%s]\n", (char *)data);
+	printf("Data -> [%s]\n", (char *)data);
 }
 
 int	main(void)
 {
 	t_list	*lst;
+	t_list	*elem;
 
 	lst = NULL;
+	elem = NULL;
 	ft_print_lst(lst);
-	ft_list_foreach(lst, NULL);
-	ft_list_foreach(lst, &print_data);
+	elem = ft_list_find(lst, "test", NULL);
 
 	ft_list_push_back(&lst, "First");
 	ft_list_push_back(&lst, "Second");
 	ft_list_push_back(&lst, "Third");
 	ft_list_push_back(&lst, "Fourth");
 	ft_list_push_back(&lst, "Fifth");
-
-	ft_list_foreach(lst, &print_data);
 	ft_print_lst(lst);
+
+	printf("Applying ft_list_find(\"Second\"):\n");
+	elem = ft_list_find(lst, "Second", &cmp_str);
+	elem ? printf("Elem found: [%s]\n", (char *)elem->data) : printf("(null)\n");
+	printf("Applying ft_list_find(\"test\"):\n");
+	elem = ft_list_find(lst, "test", &cmp_str);
+	elem ? printf("Elem found: [%s]\n", (char *)elem->data) : printf("(null)\n");
+	printf("Applying ft_list_find(\"te\"):\n");
+	elem = ft_list_find(lst, "te", &cmp_str);
+	elem ? printf("Elem found: [%s]\n", (char *)elem->data) : printf("(null)\n");
+	printf("Applying ft_list_find(\"\"):\n");
+	elem = ft_list_find(lst, "", &cmp_str);
+	elem ? printf("Elem found: [%s]\n", (char *)elem->data) : printf("(null)\n");
+
 	return (0);
 }

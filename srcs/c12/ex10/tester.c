@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/28 18:04:53 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/06/28 18:25:25 by mcauchy          ###   ########.fr       */
+/*   Created: 2024/06/28 18:33:43 by mcauchy           #+#    #+#             */
+/*   Updated: 2024/06/28 18:45:55 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,14 @@ void	ft_list_push_back(t_list **begin_list, void *data)
 	}
 }
 
+int	cmp_str(void *s1, void *s2)
+{
+	return (strcmp((char *)s1, (char *)s2));
+}
+
 void	print_data(void *data)
 {
-	printf("Data is: [%s]\n", (char *)data);
+	printf("Data -> [%s]\n", (char *)data);
 }
 
 int	main(void)
@@ -86,16 +91,18 @@ int	main(void)
 
 	lst = NULL;
 	ft_print_lst(lst);
-	ft_list_foreach(lst, NULL);
-	ft_list_foreach(lst, &print_data);
+	ft_list_foreach_if(lst, &print_data, NULL, NULL);
+	ft_list_foreach_if(lst, &print_data, NULL, &cmp_str);
+	ft_list_foreach_if(NULL, &print_data, NULL, &cmp_str);
 
 	ft_list_push_back(&lst, "First");
 	ft_list_push_back(&lst, "Second");
 	ft_list_push_back(&lst, "Third");
 	ft_list_push_back(&lst, "Fourth");
 	ft_list_push_back(&lst, "Fifth");
-
-	ft_list_foreach(lst, &print_data);
 	ft_print_lst(lst);
+
+	printf("Applying ft_list_foreach_if:\n");
+    ft_list_foreach_if(lst, &print_data, "Second", &cmp_str);
 	return (0);
 }

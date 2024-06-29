@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 13:39:44 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/06/28 17:55:15 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/06/29 13:23:20 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,5 +164,13 @@ t_list	*ft_list_push_strs(int size, char **strs);
 void	ft_list_clear(t_list *lst, void (*free_fct)(void *));
 t_list	*ft_list_at(t_list *begin_list, unsigned int nbr);
 void	ft_list_reverse(t_list **begin_list);
+void	ft_list_foreach(t_list *begin_list, void (*f)(void *));
+void	ft_list_foreach_if(t_list *begin_list, void (*f)(void *), void \
+		*data_ref, int (*cmp)(void *, void *));
+t_list	*ft_list_find(t_list *begin_list, void *data_ref, int (*cmp)(void *, \
+		void *));
+void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(void \
+		*, void *), void (*free_fct)(void *));
+void	ft_list_merge(t_list **begin_list1, t_list *begin_list2);
 
 #endif
