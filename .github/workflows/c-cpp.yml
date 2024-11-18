@@ -16,4 +16,4 @@ jobs:
     - name: make
       run: make
     - name: make fclean
-      run: make fclan
+      run: make fclean
