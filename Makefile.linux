@@ -6,7 +6,7 @@
 #    By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/21 16:14:37 by mcauchy           #+#    #+#              #
-#    Updated: 2024/11/18 17:08:58 by mcauchy          ###   ########.fr        #
+#    Updated: 2024/11/18 17:43:39 by mcauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -133,7 +133,6 @@ C06: all
 MK_LIBFT:
 	@make -C $(LIBFT_DIR)
 	@make -C $(LIBFT_DIR) bonus
-	@clear
 
 clean:
 	@/bin/rm -f $(OBJS)
