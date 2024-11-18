@@ -6,7 +6,7 @@
 #    By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/21 16:14:37 by mcauchy           #+#    #+#              #
-#    Updated: 2024/11/18 17:43:39 by mcauchy          ###   ########.fr        #
+#    Updated: 2024/11/18 17:50:12 by mcauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -138,7 +138,6 @@ clean:
 	@/bin/rm -f $(OBJS)
 	@/bin/rm -rf $(OBJ_DIR)
 	@make -C $(LIBFT_DIR) clean
-	@clear
 	@echo "$(GREEN)clean done.$(RESET)"
 
 fclean: clean
@@ -153,7 +152,6 @@ fclean: clean
 	@for i in $(shell seq 0 5); do make -C srcs/c03/ex0$$i fclean > /dev/null; done #c03
 	@for i in $(shell seq 0 5); do make -C srcs/c04/ex0$$i fclean > /dev/null; done #c04
 	@for i in $(shell seq 0 8); do make -C srcs/c05/ex0$$i fclean > /dev/null; done #c05
-	@clear
 	@echo "$(GREEN)fclean done.$(RESET)"
 
 re: fclean all
