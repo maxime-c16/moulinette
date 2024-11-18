@@ -5,14 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/05/28 15:11:11 by mcauchy           #+#    #+#              #
-#    Updated: 2024/11/18 17:08:38 by mcauchy          ###   ########.fr        #
+#    Created: 2024/06/30 15:18:08 by mcauchy           #+#    #+#              #
+#    Updated: 2024/06/30 18:31:03 by mcauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FILES = ft_strlcat.c
-
-TESTERS = tester1.c tester2.c
+FILES = btree_level_count.c tester.c
 
 OBJ_DIR = .objs
 
@@ -22,9 +20,7 @@ SRCS = $(FILES)
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
 
-TESTERS_OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(TESTERS:.c=.o)))
-
-CC = gcc -w
+CC = gcc -fsanitize=address -g3 -Wall -Wextra -Werror
 
 NAME = tester
 
@@ -32,14 +28,11 @@ HEADER = ../../../includes/tester.h
 
 all: $(NAME)
 
-$(NAME):	$(OBJS) $(TESTERS_OBJS)
+$(NAME):	$(OBJS)
+			@$(CC) $^ -o $@
 			@mkdir -p $(OUT_DIR)
-			@j=1; \
-			for i in $(TESTERS_OBJS); do \
-				$(CC) $(OBJS) $$i -o $(NAME); \
-				./$(NAME) > $(OUT_DIR)/$(basename $(FILES))$$j.out; \
-				j=$$((j+1)); \
-			done
+			@./$(NAME) > $(OUT_DIR)/btree_level_count.out
+
 
 $(OBJ_DIR)/%.o:	%.c $(HEADER)
 				@mkdir -p $(OBJ_DIR)
@@ -52,6 +45,3 @@ clean:
 fclean:		clean
 			@/bin/rm -f $(NAME)
 			@/bin/rm -rf $(OUT_DIR)
-
-re:			fclean all
-

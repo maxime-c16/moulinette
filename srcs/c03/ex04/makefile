@@ -6,7 +6,7 @@
 #    By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/28 13:51:19 by mcauchy           #+#    #+#              #
-#    Updated: 2024/05/28 13:51:27 by mcauchy          ###   ########.fr        #
+#    Updated: 2024/11/18 17:08:23 by mcauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,13 +44,13 @@ $(NAME):	$(OBJS) $(TESTERS_OBJS)
 $(OBJ_DIR)/%.o:	%.c $(HEADER)
 				@mkdir -p $(OBJ_DIR)
 				@$(CC) -o $@ -c $<
-				
+
 clean:
 			@/bin/rm -f $(OBJS)
 			@/bin/rm -rf $(OBJ_DIR)
-			
+
 fclean:		clean
 			@/bin/rm -f $(NAME)
 			@/bin/rm -rf $(OUT_DIR)
-			
+
 re:			fclean all

@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 14:49:20 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/28 15:16:03 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/11/18 16:52:03 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main()
 	expected = strlen("Hello, ") + strlen("world!");
 
 	printf("Expected length: %u, Actual length: %u\n", 7, result);
-	printf("Expected first character of dest: \0, Actual first character: %c\n", dest[0]);
+	printf("Expected first character of dest: H, Actual first character: %c\n", dest[0] ? dest[0] : '\0');
 
 	return 0;
 }

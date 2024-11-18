@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tester.c                                           :+:      :+:    :+:   */
+/*   btree_apply_suffix.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/28 13:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/07/01 12:06:32 by mcauchy          ###   ########.fr       */
+/*   Created: 2024/06/30 17:28:02 by mcauchy           #+#    #+#             */
+/*   Updated: 2024/06/30 17:29:41 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/tester.h"
+#include "ft_btree.h"
 
-int	main(void)
+void	btree_apply_suffix(t_btree *root, void (*applyf)(void *))
 {
-	t_list	*ptr;
-
-	ptr = NULL;
-	ptr = ft_create_elem("Hello, World!");
-	printf("ptr.data: %s\n", (char *)ptr->data);
-	printf("ptr.next: %p\n", (void *)ptr->next);
-	return (0);
+	if (!root)
+		return ;
+	btree_apply_suffix(root->left, (*applyf));
+	btree_apply_suffix(root->right, (*applyf));
+	(*applyf)(root->item);
 }

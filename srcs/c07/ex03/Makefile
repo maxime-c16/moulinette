@@ -1,18 +1,16 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/05/28 15:11:11 by mcauchy           #+#    #+#              #
-#    Updated: 2024/11/18 17:08:38 by mcauchy          ###   ########.fr        #
+#    Created: 2024/07/02 10:50:15 by mcauchy           #+#    #+#              #
+#    Updated: 2024/07/02 10:56:08 by mcauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FILES = ft_strlcat.c
-
-TESTERS = tester1.c tester2.c
+FILES = ft_strjoin.c tester.c
 
 OBJ_DIR = .objs
 
@@ -22,9 +20,7 @@ SRCS = $(FILES)
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
 
-TESTERS_OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(TESTERS:.c=.o)))
-
-CC = gcc -w
+CC = gcc
 
 NAME = tester
 
@@ -32,14 +28,13 @@ HEADER = ../../../includes/tester.h
 
 all: $(NAME)
 
-$(NAME):	$(OBJS) $(TESTERS_OBJS)
+$(NAME)	:	$(OBJS)
+			@$(CC) $^ -o $@
 			@mkdir -p $(OUT_DIR)
-			@j=1; \
-			for i in $(TESTERS_OBJS); do \
-				$(CC) $(OBJS) $$i -o $(NAME); \
-				./$(NAME) > $(OUT_DIR)/$(basename $(FILES))$$j.out; \
-				j=$$((j+1)); \
-			done
+			@./$(NAME) > $(OUT_DIR)/ft_strjoin.out
+			@./$(NAME) a b c > $(OUT_DIR)/ft_strjoin.out
+
+
 
 $(OBJ_DIR)/%.o:	%.c $(HEADER)
 				@mkdir -p $(OBJ_DIR)
@@ -52,6 +47,3 @@ clean:
 fclean:		clean
 			@/bin/rm -f $(NAME)
 			@/bin/rm -rf $(OUT_DIR)
-
-re:			fclean all
-

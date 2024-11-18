@@ -5,20 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/28 13:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/07/01 12:06:32 by mcauchy          ###   ########.fr       */
+/*   Created: 2024/07/02 10:45:57 by mcauchy           #+#    #+#             */
+/*   Updated: 2024/07/02 10:56:54 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/tester.h"
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	t_list	*ptr;
+	char	*str;
 
-	ptr = NULL;
-	ptr = ft_create_elem("Hello, World!");
-	printf("ptr.data: %s\n", (char *)ptr->data);
-	printf("ptr.next: %p\n", (void *)ptr->next);
-	return (0);
+	// str = ft_strjoin(ac, av, NULL);
+	// str = ft_strjoin(ac, NULL, "test");
+	str = ft_strjoin(0, NULL, "test");
+	str = ft_strjoin(ac, av, " et ");
+	printf("%s\n", str);
 }

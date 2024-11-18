@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 14:04:41 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/06/16 16:39:14 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/07/02 13:39:15 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 	while (i < ac)
 	{
 		tab[i].size = ft_strlen(av[i]);
-		tab[i].str = av[i];
+		tab[i].str = ft_strdup(av[i]);
 		tab[i].copy = ft_strdup(av[i]);
 		i++;
 	}

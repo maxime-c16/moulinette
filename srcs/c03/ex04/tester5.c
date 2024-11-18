@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 13:50:55 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/28 13:51:00 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/11/18 16:56:27 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(void)
 {
 	char	*str = "";
-	
-	printf("%s\n", ft_strstr(str, "World"));
+
+	printf("%s\n", ft_strstr(str, "World") ? "OK" : "KO");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 12:45:04 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/05/23 14:10:06 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/11/18 12:16:18 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ typedef struct s_help
 	char	c;
 }	t_help;
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strncmp(char *s1, char *s2, unsigned int n);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_memcmp(const void *s1, const void *s2, int n);
 int		ft_atoi(const char *str);
@@ -112,7 +112,7 @@ char	*ft_itoa(int n);
 char	**ft_split_parsing(char const *s, char c);
 char	*ft_strcpy(char *str, char *old_str);
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
-unsigned int	ft_strlcat(char *dst, const char *src, unsigned int size);
+unsigned int	ft_strlcat(char *dst, char *src, unsigned int size);
 
 // liste chainee
 

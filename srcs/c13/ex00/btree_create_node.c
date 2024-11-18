@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tester.c                                           :+:      :+:    :+:   */
+/*   btree_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/28 13:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/07/01 12:06:32 by mcauchy          ###   ########.fr       */
+/*   Created: 2024/06/30 15:10:44 by mcauchy           #+#    #+#             */
+/*   Updated: 2024/06/30 15:18:47 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/tester.h"
+#include "ft_btree.h"
 
-int	main(void)
+t_btree	*btree_create_node(void *item)
 {
-	t_list	*ptr;
+	t_btree	*node;
 
-	ptr = NULL;
-	ptr = ft_create_elem("Hello, World!");
-	printf("ptr.data: %s\n", (char *)ptr->data);
-	printf("ptr.next: %p\n", (void *)ptr->next);
-	return (0);
+	node = (t_btree *)malloc(sizeof(t_btree));
+	if (node)
+	{
+		node->left = NULL;
+		node->right = NULL;
+		node->item = item;
+	}
+	return (node);
 }

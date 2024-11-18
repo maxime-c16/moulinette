@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 17:26:45 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/06/05 12:46:27 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/11/18 12:20:03 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@
 # define FT_STRCAT_TESTER 3
 # define FT_STRNCAT_TESTER 5
 # define FT_STRSTR_TESTER 5
+# define FT_STRLCAT_TESTER 2
 
 // c04
 

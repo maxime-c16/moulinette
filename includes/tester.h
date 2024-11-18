@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 13:39:44 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/06/29 18:37:28 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/11/18 12:12:34 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <strings.h>
 # include <ctype.h>
 # include <fcntl.h>
 # include <errno.h>
@@ -151,8 +152,8 @@ void	ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char *));
 
 typedef struct s_list
 {
-	struct s_list	*next;
 	void			*data;
+	struct s_list	*next;
 }					t_list;
 
 t_list	*ft_create_elem(void *data);
@@ -177,6 +178,25 @@ void	ft_list_reverse_fun(t_list *begin_list);
 void	ft_sorted_list_insert(t_list **begin_list, void *data, int (*cmp)(void \
 		*, void *));
 void	ft_sorted_list_merge(t_list **begin_list1, t_list *begin_list2, \
-		int (*cmp)());
+		int (*cmp)(void *, void *));
+
+// c13
+
+typedef struct s_btree
+{
+	struct s_btree	*left;
+	struct s_btree	*right;
+	void			*item;
+}					t_btree;
+
+t_btree	*btree_create_node(void *item);
+void	btree_apply_prefix(t_btree *root, void (*applyf)(void *));
+void	btree_apply_infix(t_btree *root, void (*applyf)(void *));
+void	btree_apply_suffix(t_btree *root, void (*applyf)(void *));
+void	btree_insert_data(t_btree **root, void *item, int (*cmpf)(void *, \
+		void *));
+void	*btree_search_item(t_btree *root, void *data_ref, int (*cmpf)(void *, \
+		void *));
+int		btree_level_count(t_btree *root);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 17:23:39 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/06/17 19:52:01 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/07/08 11:16:56 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ int	count_words(char *str, char *charset)
 				i++;
 		}
 	}
-	dprintf(2, "count_words: %d\n", count);
 	return (count);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/06/03 16:32:46 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/11/18 16:37:46 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	g_success_tests = 0;
 int	g_total_tests = 0;
 
-char	*create_function_name(char *filename, char **function_dir) 
+char	*create_function_name(char *filename, char **function_dir)
 {
 	int		index;
 	int		i;
@@ -23,7 +23,7 @@ char	*create_function_name(char *filename, char **function_dir)
 	int		size;
 	char	*buff;
 	char	*dir_cpy;
-	
+
 	i = 0;
 	index = 0;
 	size = 0;
@@ -76,21 +76,33 @@ FILE	*get_student_output(char *function_dir, char *function_name, int index, int
 	char	*cwd;
 	char	*out_path;
 	FILE	*student_output;
+	char 	*temp;
+	char	 *itoa_result;
 
 	cwd = getcwd(NULL, 0);
 	cwd = ft_strjoin(cwd, "/");
 	stud_path = ft_strjoin(cwd, function_dir);
 	command = ft_strjoin("gcc -c ", stud_path);
+	temp = command;
 	command = ft_strjoin(command, function_name);
+	free(temp);
+	temp = command;
 	command = ft_strjoin(command, ".c ");
+	free(temp);
 	if (define_v > 1)
 	{
 		command = ft_strjoin(command, cwd);
 		command = ft_strjoin(command, "srcs/");
 		command = ft_strjoin(command, function_dir);
 		command = ft_strjoin(command, "tester");
-		command = ft_strjoin(command, ft_itoa(index + 1));
-		out_path = ft_strjoin("student_output", ft_itoa(index + 1));
+		itoa_result = ft_itoa(index + 1);
+		temp = command;
+		command = ft_strjoin(command, itoa_result);
+		free(temp);
+		free(itoa_result);
+		itoa_result = ft_itoa(index + 1);
+		out_path = ft_strjoin("student_output", itoa_result);
+		free(itoa_result);
 		command = ft_strjoin(command, ".c");
 	}
 	else if (define_v == 1)
@@ -109,6 +121,8 @@ FILE	*get_student_output(char *function_dir, char *function_name, int index, int
 	system(command);
 	system("rm *.o stud");
 	student_output = fopen(out_path, "r");
+	free(out_path);
+	free(command);
 	if (!student_output)
 	{
 		printf("Error: could not open student output file\n");
@@ -125,10 +139,19 @@ int check_output(FILE *expected_output, FILE *student_output, char *output_name,
 	FILE	*trace;
 	bool	is_created = false;
 
+	char	*temp;
+	char	*itoa_result;
+
 	command = ft_strdup("diff ");
+	temp = command;
 	command = ft_strjoin(command, output_name);
+	free(temp);
 	command = ft_strjoin(command, " student_output");
-	command = ft_strjoin(command, ft_itoa(index + 1));
+	itoa_result = ft_itoa(index + 1);
+	temp = command;
+	command = ft_strjoin(command, itoa_result);
+	free(temp);
+	free(itoa_result);
 	command = ft_strjoin(command, " >> trace");
 	while (fscanf(expected_output, "%c", &expected_char) != EOF)
 	{
@@ -232,6 +255,7 @@ int return_define_value_from_filename(char *function_name)
 		{"ft_strncmp", FT_STRNCMP_TESTER},
 		{"ft_strcat", FT_STRCAT_TESTER},
 		{"ft_strncat", FT_STRNCAT_TESTER},
+		{"ft_strlcat", FT_STRLCAT_TESTER},
 		{"ft_strstr", FT_STRSTR_TESTER},
 		{"ft_atoi", FT_ATOI_TESTER},
 		{"ft_putnbr_base", FT_PUTNBR_BASE_TESTER},
@@ -295,7 +319,10 @@ int	create_compare_stud_output(char *function_dir, char *function_name)
 	int		total_tests;
 	int		failed_tests;
 	int		successful_tests;
-	
+
+	char	*itoa_result;
+	char	*temp;
+
 	i = 0;
 	is_success = true;
 	total_tests = 0;
@@ -313,9 +340,16 @@ int	create_compare_stud_output(char *function_dir, char *function_name)
 		output_name[i] = ft_strjoin("srcs/", function_dir);
 		output_name[i] = ft_strjoin(output_name[i], "output/");
 		output_name[i] = ft_strjoin(output_name[i], function_name);
-		if (define_v > 1)
-			output_name[i] = ft_strjoin(output_name[i], ft_itoa(i + 1));
+		if (define_v > 1) {
+			itoa_result = ft_itoa(i + 1);
+			temp = output_name[i];
+			output_name[i] = ft_strjoin(output_name[i], itoa_result);
+			free(temp);
+			free(itoa_result);
+		}
+		temp = output_name[i];
 		output_name[i] = ft_strjoin(output_name[i], ".out");
+		free(temp);
 		cwd = ft_strjoin(cwd, "/");
 		output_name[i] = ft_strjoin(cwd, output_name[i]);
 		expected_output[i] = fopen(output_name[i], "r");
@@ -390,7 +424,7 @@ void process_directory(const char *base_path, const char *sub_dir)
 	DIR			*dr;
 	char 		full_path[1024];
 	struct stat	st;
-	
+
 	snprintf(path, sizeof(path), "%s/%s", base_path, sub_dir);
 	dr = opendir(path);
 	if (!dr)
@@ -451,10 +485,10 @@ void process_directory(const char *base_path, const char *sub_dir)
 	closedir(dr);
 }
 
-int main(int ac, char **av) 
+int main(int ac, char **av)
 {
 	float	final_grade;
-	
+
 	final_grade = 0;
 	if (ac != 2)
 	{
