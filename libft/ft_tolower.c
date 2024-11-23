@@ -6,13 +6,13 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 17:32:54 by maximecauch       #+#    #+#             */
-/*   Updated: 2022/06/22 12:21:04 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/11/22 15:29:20 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int	ft_tolower(int c)
+char	ft_tolower(char c)
 {
 	if (c >= 'A' && c <= 'Z')
 		return (c += 32);

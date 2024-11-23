@@ -6,13 +6,13 @@
 #    By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/29 14:32:58 by mcauchy           #+#    #+#              #
-#    Updated: 2024/05/29 14:38:43 by mcauchy          ###   ########.fr        #
+#    Updated: 2024/11/22 15:51:38 by mcauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FILES = ft_sqrt.c
 
-TESTERS = tester1.c tester2.c tester3.c tester4.c tester5.c
+TESTERS = tester1.c tester2.c tester3.c tester4.c
 
 OBJ_DIR = .objs
 
@@ -44,11 +44,11 @@ $(NAME):	$(OBJS) $(TESTERS_OBJS)
 $(OBJ_DIR)/%.o:	%.c $(HEADER)
 				@mkdir -p $(OBJ_DIR)
 				@$(CC) -o $@ -c $<
-				
+
 clean:
 			@/bin/rm -f $(OBJS)
 			@/bin/rm -rf $(OBJ_DIR)
-			
+
 fclean:		clean
 			@/bin/rm -f $(NAME)
 			@/bin/rm -rf $(OUT_DIR)

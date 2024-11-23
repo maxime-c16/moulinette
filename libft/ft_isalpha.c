@@ -6,13 +6,13 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 12:43:34 by mcauchy           #+#    #+#             */
-/*   Updated: 2022/08/14 12:43:35 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/11/22 15:28:48 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int	ft_isalpha(int c)
+char	ft_isalpha(char c)
 {
 	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
 		return (1);

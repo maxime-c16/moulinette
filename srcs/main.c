@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:45:24 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/11/18 17:52:36 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/11/23 10:58:52 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,39 @@ char	*create_function_name(char *filename, char **function_dir)
 	return (NULL);
 }
 
+FILE	*get_program_output(char *function_dir, char *function_name, int index, int define_v)
+{
+	FILE	*student_output;
+	char	*command;
+	char	*out_path;
+	char	*cwd;
+
+	cwd = getcwd(NULL, 0);
+	cwd = ft_strjoin(cwd, "/");
+	cwd = ft_strjoin(cwd, function_dir);
+	command = ft_strdup("make -s --no-print-directory -C ");
+	command = ft_strjoin(command, cwd);
+	cwd = ft_strjoin(cwd, "output/");
+	system(command);
+	if (define_v < -1)
+	{
+		out_path = ft_strjoin(function_name, ft_itoa(index + 1));
+		out_path = ft_strjoin(out_path, ".out");
+		out_path = ft_strjoin(cwd, out_path);
+		student_output = fopen(out_path, "r");
+		free(out_path);
+		return (student_output);
+	}
+	else if (define_v == -1)
+	{
+		out_path = ft_strjoin(function_name, ".out");
+		out_path = ft_strjoin(cwd, out_path);
+		student_output = fopen(out_path, "r");
+		free(out_path);
+		return (student_output);
+	}
+}
+
 FILE	*get_student_output(char *function_dir, char *function_name, int index, int define_v)
 {
 	char	*command;
@@ -79,6 +112,8 @@ FILE	*get_student_output(char *function_dir, char *function_name, int index, int
 	char 	*temp;
 	char	 *itoa_result;
 
+	if (define_v < 0)
+		return (get_program_output(function_dir, function_name, index, define_v));
 	cwd = getcwd(NULL, 0);
 	cwd = ft_strjoin(cwd, "/");
 	stud_path = ft_strjoin(cwd, function_dir);
@@ -269,6 +304,10 @@ int return_define_value_from_filename(char *function_name)
 		{"ft_is_prime", FT_IS_PRIME_TESTER},
 		{"ft_find_next_prime", FT_FIND_NEXT_PRIME_TESTER},
 		{"ft_ten_queens_puzzle", FT_TEN_QUEENS_PUZZLE_TESTER},
+		{"ft_print_program_name", FT_PRINT_PROGRAM_NAME_TESTER},
+		{"ft_print_params", FT_PRINT_PARAMS_TESTER},
+		{"ft_rev_params", FT_REV_PARAMS_TESTER},
+		{"ft_sort_params", FT_SORT_PARAMS_TESTER}
 		// {"ft_split", FT_SPLIT_TESTER},
 		// {"ft_print_tab", FT_PRINT_TAB_TESTER},
 		// {"ft_dup_tab", FT_DUP_TAB_TESTER},
@@ -329,18 +368,18 @@ int	create_compare_stud_output(char *function_dir, char *function_name)
 	failed_tests = 0;
 	successful_tests = 0;
 	define_v = return_define_value_from_filename(function_name);
-	output_name = (char **)malloc(sizeof(char *) * define_v + 1);
-	student_outputs = (FILE **)malloc(sizeof(FILE *) * define_v + 1);
-	expected_output = (FILE **)malloc(sizeof(FILE *) * define_v + 1);
+	output_name = (char **)malloc(sizeof(char *) * abs(define_v) + 1);
+	student_outputs = (FILE **)malloc(sizeof(FILE *) * abs(define_v) + 1);
+	expected_output = (FILE **)malloc(sizeof(FILE *) * abs(define_v) + 1);
 	if (!output_name || !student_outputs || !expected_output)
 		return (EXIT_FAILURE);
 	cwd = getcwd(NULL, 0);
-	while (i < define_v)
+	while (i < abs(define_v))
 	{
 		output_name[i] = ft_strjoin("srcs/", function_dir);
 		output_name[i] = ft_strjoin(output_name[i], "output/");
 		output_name[i] = ft_strjoin(output_name[i], function_name);
-		if (define_v > 1) {
+		if (abs(define_v) > 1) {
 			itoa_result = ft_itoa(i + 1);
 			temp = output_name[i];
 			output_name[i] = ft_strjoin(output_name[i], itoa_result);
@@ -355,7 +394,7 @@ int	create_compare_stud_output(char *function_dir, char *function_name)
 		expected_output[i] = fopen(output_name[i], "r");
 		if (!expected_output[i])
 		{
-			printf("Error: could not open expected output file\n");
+			printf("Error: could not open expected output file: %s\n", output_name[i]);
 			return (EXIT_FAILURE);
 		}
 		student_outputs[i] = get_student_output(function_dir, function_name, i, define_v);
@@ -381,7 +420,7 @@ int	create_compare_stud_output(char *function_dir, char *function_name)
 	}
 	else
 	{
-		while (i < define_v)
+		while (i < abs(define_v))
 		{
 			printf("Test %d: ", i + 1);
 			total_tests++;
@@ -429,13 +468,12 @@ void process_directory(const char *base_path, const char *sub_dir)
 	dr = opendir(path);
 	if (!dr)
 	{
-		perror("opendir");
 		return;
 	}
 	while ((de = readdir(dr)) != NULL)
 	{
 		// Skip the current and parent directory entries
-		if (strcmp(de->d_name, ".") == 0 || strcmp(de->d_name, "..") == 0)
+		if (strcmp(de->d_name, ".") == 0 || strcmp(de->d_name, "..") == 0 || strcmp(de->d_name, ft_strjoin(base_path, ".objs")) == 0)
 			continue;
 		snprintf(full_path, sizeof(full_path), "%s/%s/%s", base_path, sub_dir, de->d_name);
 		if (stat(full_path, &st) == -1)

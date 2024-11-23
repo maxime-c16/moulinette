@@ -6,15 +6,15 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 12:44:27 by mcauchy           #+#    #+#             */
-/*   Updated: 2022/08/14 12:44:28 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/11/22 15:28:54 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int	ft_isascii(int c)
+char	ft_isascii(char c)
 {
-	if (c >= 0 && c <= 127)
+	if (c >= 0 && c < 127)
 		return (1);
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 12:44:22 by mcauchy           #+#    #+#             */
-/*   Updated: 2022/08/14 12:44:23 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/11/22 15:29:06 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int	ft_isprint(int c)
+char	ft_isprint(char c)
 {
 	if (c >= 32 && c <= 126)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 12:45:04 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/11/18 12:16:18 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/11/22 15:48:37 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,14 @@ typedef struct s_help
 int		ft_strncmp(char *s1, char *s2, unsigned int n);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_memcmp(const void *s1, const void *s2, int n);
-int		ft_atoi(const char *str);
-int		ft_isalpha(int c);
-int		ft_isalnum(int c);
-int		ft_isprint(int c);
-int		ft_tolower(int c);
-int		ft_isdigit(int c);
-int		ft_isascii(int c);
-int		ft_toupper(int c);
+int		ft_atoi(char *str);
+char	ft_isalpha(char c);
+char	ft_isalnum(char c);
+char	ft_isprint(char c);
+char	ft_tolower(char c);
+char	ft_isdigit(char c);
+char	ft_isascii(char c);
+char	ft_toupper(char c);
 int		ft_str_is_numeric(char *str);
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);

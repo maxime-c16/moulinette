@@ -6,7 +6,7 @@
 #    By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/21 16:14:37 by mcauchy           #+#    #+#              #
-#    Updated: 2024/11/18 17:50:12 by mcauchy          ###   ########.fr        #
+#    Updated: 2024/11/23 10:58:21 by mcauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS = $(addprefix $(SRC_DIR)/, $(FILES))
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
 
-CC = gcc -w
+CC = gcc -w -g3
 
 # CFLAGS = -Wall -Wextra -Werror
 
@@ -52,38 +52,36 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER)
 
 C00: all
 	@echo "$(BLUE)compiling c00...$(RESET)"
-	@seq 0 8 | xargs -n 1 -P 8 -I {} make -C srcs/c00/ex0{} > /dev/null
+	@seq 0 8 | xargs -P 8 -I {} make -C srcs/c00/ex0{} > /dev/null
 	@echo "$(BLUE)copying student c00 folder into moulinette/...$(RESET)"
 	@cp -r ../c00 .
 	@echo "$(BLUE)changing include path in ft_*.c files...$(RESET)"
 	@find c00/ex* -name "*.c" -exec sed -i 's/^#include .*/#include "..\/..\/includes\/moulinette.h"/' {} \;
 	@echo "$(BLUE)generating output files...$(RESET)"
-	@seq 0 8 | xargs -n 1 -P 8 -I {} make -C srcs/c00/ex0{} > /dev/null
-	@echo "usage: $(BOLD)./moulinette $(RED)[path to c00]$(RESET)"
+	@seq 0 8 | xargs -P 8 -I {} make -C srcs/c00/ex0{} > /dev/null
+	@./moulinette c00
 
 C01: all
 	@echo "$(BLUE)compiling c01...$(RESET)"
-	@seq 0 8 | xargs -n 1 -P 8 -I {} make -C srcs/c01/ex0{} > /dev/null
+	@seq 0 8 | xargs -P 8 -I {} make -C srcs/c01/ex0{} > /dev/null
 	@echo "$(BLUE)copying student c01 folder into moulinette/...$(RESET)"
 	@cp -r ../c01 .
 	@echo "$(BLUE)changing include path in ft_*.c files...$(RESET)"
 	@find c01/ex* -name "*.c" -exec sed -i 's/^#include .*/#include "..\/..\/includes\/moulinette.h"/' {} \;
 	@echo "$(BLUE)generating output files...$(RESET)"
-	@seq 0 8 | xargs -n 1 -P 8 -I {} make -C srcs/c01/ex0{} > /dev/null
-	@echo "usage: $(BOLD)./moulinette $(RED)[path to c01]$(RESET)"
+	@seq 0 8 | xargs -P 8 -I {} make -C srcs/c01/ex0{} > /dev/null
+	@./moulinette c01
 
 C02: all
 	@echo "$(BLUE)compiling c02...$(RESET)"
-	@seq 0 9 | xargs -n 1 -P 9 -I {} make -C srcs/c02/ex0{} > /dev/null
-	@seq 10 12 | xargs -n 1 -P 2 -I {} make -C srcs/c02/ex{} > /dev/null
+	@seq 0 9 | xargs -P 9 -I {} make -C srcs/c02/ex0{} > /dev/null
+	@seq 10 12 | xargs -P 2 -I {} make -C srcs/c02/ex{} > /dev/null
 	@echo "$(BLUE)copying student c02 folder into moulinette/...$(RESET)"
 	@cp -r ../c02 .
 	@echo "$(BLUE)changing include path in ft_*.c files...$(RESET)"
 	@find c02/ex* -name "*.c" -exec sed -i 's/^#include .*/#include "..\/..\/includes\/moulinette.h"/' {} \;
 	@echo "$(BLUE)generating output files...$(RESET)"
-	@seq 0 9 | xargs -n 1 -P 9 -I {} make -C srcs/c02/ex0{} > /dev/null
-	@seq 10 12 | xargs -n 1 -P 2 -I {} make -C srcs/c02/ex{} > /dev/null
-	@echo "usage: $(BOLD)./moulinette $(RED)[path to c02]$(RESET)"
+	@./moulinette c02
 
 C03: all
 	@echo "$(BLUE)compiling c03...$(RESET)"
@@ -93,58 +91,59 @@ C03: all
 	@echo "$(BLUE)changing include path in ft_*.c files...$(RESET)"
 	@find c03/ex* -name "*.c" -exec sed -i 's/^#include .*/#include "..\/..\/includes\/moulinette.h"/' {} \;
 	@echo "$(BLUE)generating output files...$(RESET)"
-	@seq 0 5 | xargs -P 5 -I {} make -C srcs/c03/ex0{} > /dev/null
 	@./moulinette c03
 
 C04: all
 	@echo "$(BLUE)compiling c04...$(RESET)"
-	@seq 0 5 | xargs -n 1 -P 6 -I {} make -C srcs/c04/ex0{} > /dev/null
+	@seq 0 5 | xargs -P 6 -I {} make -C srcs/c04/ex0{} > /dev/null
 	@echo "$(BLUE)copying student c04 folder into moulinette/...$(RESET)"
 	@cp -r ../c04 .
 	@echo "$(BLUE)changing include path in ft_*.c files...$(RESET)"
 	@find c04/ex* -name "*.c" -exec sed -i 's/^#include .*/#include "..\/..\/includes\/moulinette.h"/' {} \;
 	@echo "$(BLUE)generating output files...$(RESET)"
-	@seq 0 5 | xargs -n 1 -P 6 -I {} make -C srcs/c04/ex0{} > /dev/null
-	@echo "usage: $(BOLD)./moulinette $(RED)[path to c04]$(RESET)"
+	@./moulinette c04
 
 C05: all
 	@echo "$(RED)this will take a while to compile, please be patient...$(RESET)"
 	@echo "$(BLUE)compiling c05...$(RESET)"
-	@seq 0 8 | xargs -n 1 -P 8 -I {} make -C srcs/c05/ex0{} > /dev/null
+	@seq 0 8 | xargs -P 8 -I {} make -C srcs/c05/ex0{} > /dev/null
 	@echo "$(BLUE)copying student c05 folder into moulinette/...$(RESET)"
 	@cp -r ../c05 .
 	@echo "$(BLUE)changing include path in ft_*.c files...$(RESET)"
 	@find c05/ex* -name "*.c" -exec sed -i 's/^#include .*/#include "..\/..\/includes\/moulinette.h"/' {} \;
 	@echo "$(BLUE)generating output files...$(RESET)"
-	@seq 0 8 | xargs -n 1 -P 8 -I {} make -C srcs/c05/ex0{} > /dev/null
-	@echo "usage: $(BOLD)./moulinette $(RED)[path to c05]$(RESET)"
+	@seq 0 8 | xargs -P 8 -I {} make -C srcs/c05/ex0{} > /dev/null
+	@./moulinette c05
 
 C06: all
 	@echo "$(BLUE)compiling c06...$(RESET)"
-	@seq 0 1 | xargs -n 1 -P 8 -I {} make -C srcs/c06/ex0{} > /dev/null
+	@seq 0 3 | xargs -P 4 -I {} make -C srcs/c06/ex0{} > /dev/null
 	@echo "$(BLUE)copying student c06 folder into moulinette/...$(RESET)"
 	@cp -r ../c06 .
+	@seq 0 3 | xargs -P 4 -I {} cp srcs/c06/ex0{}/makefile c06/ex0{} > /dev/null
+	@seq 0 3 | xargs -P 4 -I {} mkdir -p c06/ex0{}/.objs > /dev/null
+	@find c06/ex* -name "makefile" -exec sed -i 's/^HEADER = ..\/..\/..\/includes\/tester.h */HEADER = ..\/..\/includes\/tester.h/' {} \;
 	@echo "$(BLUE)changing include path in ft_*.c files...$(RESET)"
 	@find c06/ex* -name "*.c" -exec sed -i 's/^#include .*/#include "..\/..\/includes\/moulinette.h"/' {} \;
 	@echo "$(BLUE)generating output files...$(RESET)"
-	@seq 0 1 | xargs -n 1 -P 8 -I {} make -C srcs/c06/ex0{} > /dev/null
-	@echo "usage: $(BOLD)./moulinette $(RED)[path to c06]$(RESET)"
+	@./moulinette c06
 
 MK_LIBFT:
-	@make -C $(LIBFT_DIR)
-	@make -C $(LIBFT_DIR) bonus
+	@make -s --no-print-directory -C $(LIBFT_DIR)
+	@make -s --no-print-directory -C $(LIBFT_DIR) bonus
 
 clean:
 	@/bin/rm -f $(OBJS)
 	@/bin/rm -rf $(OBJ_DIR)
-	@make -C $(LIBFT_DIR) clean
+	@make --no-print-directory -C $(LIBFT_DIR) clean
 	@echo "$(GREEN)clean done.$(RESET)"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@make -C $(LIBFT_DIR) fclean
+	@make --no-print-directory -C $(LIBFT_DIR) fclean
 	@/bin/rm -rf c*/
 	@/bin/rm -rf trace
+	@/bin/rm -rf student*
 	@for i in $(shell seq 0 8); do make -C srcs/c00/ex0$$i fclean > /dev/null; done #c00
 	@for i in $(shell seq 0 8); do make -C srcs/c01/ex0$$i fclean > /dev/null; done #c01
 	@for i in $(shell seq 0 9); do make -C srcs/c02/ex0$$i fclean > /dev/null; done #c02

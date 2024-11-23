@@ -6,13 +6,13 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 12:44:30 by mcauchy           #+#    #+#             */
-/*   Updated: 2022/10/11 17:05:42 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/11/22 15:29:00 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int	ft_isdigit(int c)
+char	ft_isdigit(char c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);

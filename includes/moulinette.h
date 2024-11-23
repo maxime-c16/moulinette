@@ -6,7 +6,7 @@
 /*   By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 17:26:45 by mcauchy           #+#    #+#             */
-/*   Updated: 2024/11/18 12:20:03 by mcauchy          ###   ########.fr       */
+/*   Updated: 2024/11/22 16:10:46 by mcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,14 @@
 # define FT_ITERATIVE_POWER_TESTER 4
 # define FT_RECURSIVE_POWER_TESTER 4
 # define FT_FIBONACCI_TESTER 4
-# define FT_SQRT_TESTER 5
+# define FT_SQRT_TESTER 4
 # define FT_IS_PRIME_TESTER 5
 # define FT_FIND_NEXT_PRIME_TESTER 5
 # define FT_TEN_QUEENS_PUZZLE_TESTER 1
 
 // c06
 
-# define FT_PRINT_PROGRAM_NAME_TESTER 0 // 0 means that this is already a program so no tester is needed because it compiles and runs itself
+# define FT_PRINT_PROGRAM_NAME_TESTER -1 // 0 means that this is already a program so no tester is needed because it compiles and runs itself
 # define FT_PRINT_PARAMS_TESTER -2 // negative because it's a program that takes arguments that have to be tested
 # define FT_REV_PARAMS_TESTER -2
 # define FT_SORT_PARAMS_TESTER -7
@@ -115,7 +115,6 @@ char	**ft_split(char const *s, char c);
 
 //main.c
 
-void	ft_print_tab(char **tab);
 char	**ft_dup_tab(char **str);
 
 //split_utils.c
