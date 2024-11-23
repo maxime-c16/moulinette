@@ -6,7 +6,7 @@
 #    By: mcauchy <mcauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/21 16:14:37 by mcauchy           #+#    #+#              #
-#    Updated: 2024/11/23 10:58:21 by mcauchy          ###   ########.fr        #
+#    Updated: 2024/11/23 11:01:49 by mcauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -151,6 +151,7 @@ fclean: clean
 	@for i in $(shell seq 0 5); do make -C srcs/c03/ex0$$i fclean > /dev/null; done #c03
 	@for i in $(shell seq 0 5); do make -C srcs/c04/ex0$$i fclean > /dev/null; done #c04
 	@for i in $(shell seq 0 8); do make -C srcs/c05/ex0$$i fclean > /dev/null; done #c05
+	@for i in $(shell seq 0 3); do make -C srcs/c06/ex0$$i fclean > /dev/null; done #c06
 	@echo "$(GREEN)fclean done.$(RESET)"
 
 re: fclean all
